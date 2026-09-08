@@ -32,7 +32,7 @@ import torch
 import torch.nn.functional as F
 import torchaudio
 import torchaudio.transforms as T
-
+import soundfile as sf
 # ── Project root on sys.path ───────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
@@ -46,6 +46,11 @@ from utils.audio_encoder import AudioEncoder, MultiLabelAudioEncoder
 # ── Default checkpoint paths ───────────────────────────────────────────────────
 DEFAULT_SINGLELABEL_CKPT  = ROOT / "models" / "alm_audio_encoder_best.pth"
 DEFAULT_MULTILABEL_CKPT   = ROOT / "models" / "alm_multilabel_best.pth"
+
+
+DEMO_AUDIO_DIR = (
+    ROOT / "outputs" / "demo_audio"
+)
 
 # ── Single-label: 58-class vocabulary (sorted, from metadata.csv) ──────────────
 SINGLE_LABEL_CLASSES = [
@@ -445,13 +450,17 @@ def run_singlelabel(args, device: str):
     if args.noise_snr is not None:
         print(f"  Adding noise at SNR = {args.noise_snr} dB")
         wav = add_background_noise(wav, snr_db=args.noise_snr)
+        noise_path = make_noise_filename(args.audio , args.noise_snr)
+
+        save_waveform(wav , noise_path , sample_rate=TARGET_SR)
 
     # Optional: mix with a second file
     if args.mix:
         print(f"  Mixing with: {args.mix}  (alpha={args.mix_alpha})")
         wav2 = load_and_standardize(args.mix, target_sr=TARGET_SR)
         wav  = mix_audio(wav, wav2, alpha=args.mix_alpha)
-
+        mix_path = make_mix_filename(args.audio , args.mix , args.mix_alpha)
+        save_waveform(wav , mix_path , sample_rate=TARGET_SR)
     # ── Run inference ─────────────────────────────────────────────────────────
     result = singlelabel_inference(model, wav, label_classes, device, top_k=args.top_k)
     print_singlelabel_result(result, args.audio)
@@ -480,6 +489,17 @@ def run_multilabel(args, device: str):
         print(f"\n  Mixing with: {args.mix}  (alpha={args.mix_alpha})")
         wav2   = load_and_standardize(args.mix, target_sr=TARGET_SR)
         mixed  = mix_audio(wav, wav2, alpha=args.mix_alpha)
+        mix_path = make_mix_filename(
+            args.audio,
+            args.mix,
+            args.mix_alpha
+        )
+        print("saving mixed Audio ..")
+        save_waveform(
+            mixed,
+            mix_path,
+            sample_rate=TARGET_SR
+        )
         result = multilabel_inference(model, mixed, label_classes, device, top_k=args.top_k)
         print_multilabel_result(result, args.audio, f"Scenario 2: Mixed Audio (alpha={args.mix_alpha})")
 
@@ -487,6 +507,16 @@ def run_multilabel(args, device: str):
     if args.noise_snr is not None:
         print(f"\n  Adding noise at SNR = {args.noise_snr} dB")
         noisy_wav = add_background_noise(wav, snr_db=args.noise_snr)
+        noise_path = make_noise_filename(
+            args.audio,
+            args.noise_snr
+        )
+        save_waveform(
+            noisy_wav,
+            noise_path,
+            sample_rate=TARGET_SR
+        )
+        
         result    = multilabel_inference(model, noisy_wav, label_classes, device, top_k=args.top_k)
         print_multilabel_result(result, args.audio, f"Scenario 3: Noisy Audio (SNR={args.noise_snr}dB)")
 
@@ -537,6 +567,48 @@ def parse_args():
     )
     return parser.parse_args()
 
+def save_waveform(wav: torch.Tensor, output_path: str, sample_rate: int = 24000):
+    """
+    Save a waveform tensor as a playable WAV file.
+
+    Args:
+        wav:
+            Tensor shaped (1, N) or (N,)
+        output_path:
+            Destination .wav path
+        sample_rate:
+            Sampling rate used by the ALM pipeline
+    """
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Move to CPU and convert to NumPy
+    wav_np = wav.detach().cpu().squeeze().numpy()
+
+    # Keep waveform in valid WAV amplitude range
+    wav_np = np.clip(wav_np, -1.0, 1.0)
+
+    # Write WAV
+    sf.write(
+        str(output_path),
+        wav_np,
+        sample_rate,
+        subtype="PCM_16"
+    )
+
+    print(f"   💾 Audio saved → {output_path}")
+
+
+def make_mix_filename(audio1 : str | Path , audio2 : str | Path , alpha : float) -> Path:
+    name1 = Path(audio1).stem
+    name2 = Path(audio2).stem
+
+    return (DEMO_AUDIO_DIR /f"{name1}_PLUS_{name2}_alpha_{alpha}.wav")
+
+def make_noise_filename(audio : str | Path , snr_db : float)-> Path:
+    name = Path(audio).stem
+
+    return (DEMO_AUDIO_DIR/f"{name}_NOISE_SNR_{snr_db}dB.wav")
 
 def main():
     args   = parse_args()
