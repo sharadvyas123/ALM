@@ -1,0 +1,9 @@
+{
+  "Communication": 0.9,
+  "Gunshot": 0.85,
+  "Footsteps": 0.85,
+  "Shelling": 0.4,
+  "Vehicle": 0.85,
+  "Helicopter": 0.45,
+  "Fighter": 0.8
+}

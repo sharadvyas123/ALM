@@ -174,7 +174,7 @@ class EnhancedALMEncoder(nn.Module):
         pooling: str = "attention",
         use_fusion: bool = True,
         use_class_queries: bool = True,
-        max_time_frames: int = 100,
+        max_time_frames: int =128,
     ) -> None:
         super().__init__()
         self.embed_dim = embed_dim
