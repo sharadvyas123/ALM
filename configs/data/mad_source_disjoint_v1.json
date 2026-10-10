@@ -1,0 +1,26 @@
+{
+  "dataset_version": "mad_source_disjoint_v1",
+  "source_csv": "data/processed_mad/metadata.csv",
+  "source_audio": "data/processed_mad/audio",
+  "raw_training_csv": "data/raw/MAD_dataset/training.csv",
+  "raw_test_csv": "data/raw/MAD_dataset/test.csv",
+  "output_dir": "data/synthetic/mad_source_disjoint_v1",
+  "manifest_dir": "data/manifests/mad_source_disjoint_v1",
+  "eligibility_policy": "verified_provenance_only",
+  "grouping": "connected_full_folder_or_valid_youtube_id",
+  "seed": 42,
+  "val_ratio": 0.15,
+  "split_candidates": 4096,
+  "sample_rate": 16000,
+  "duration_seconds": 10,
+  "clean_ratio": 0.5,
+  "two_class_ratio": 0.35,
+  "three_class_ratio": 0.15,
+  "alpha_range": [0.3, 0.7],
+  "dirichlet_concentration": [1.0, 1.0, 1.0],
+  "three_class_weight_floor": 0.2,
+  "counts_by_split": {
+    "train": {"clean": 2732, "2-class": 1912, "3-class": 820},
+    "val": {"clean": 482, "2-class": 338, "3-class": 145}
+  }
+}

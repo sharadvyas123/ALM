@@ -1,0 +1,58 @@
+{
+  "alpha_range": [
+    0.3,
+    0.7
+  ],
+  "clean_ratio": 0.5,
+  "counts": {
+    "2-class": 2250,
+    "3-class": 965,
+    "clean": 3214,
+    "total": 6429
+  },
+  "counts_by_split": {
+    "train": {
+      "2-class": 1912,
+      "3-class": 820,
+      "clean": 2732
+    },
+    "val": {
+      "2-class": 338,
+      "3-class": 145,
+      "clean": 482
+    }
+  },
+  "dataset_version": "mad_source_disjoint_v1",
+  "dirichlet_concentration": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "duration_seconds": 10,
+  "eligibility_policy": "verified_provenance_only",
+  "generation_manifest": "data/manifests/mad_source_disjoint_v1/generation_config.json",
+  "grouping": "connected_full_folder_or_valid_youtube_id",
+  "label_name_by_id": {
+    "0": "Communication",
+    "1": "Gunshot",
+    "2": "Footsteps",
+    "3": "Shelling",
+    "4": "Vehicle",
+    "5": "Helicopter",
+    "6": "Fighter"
+  },
+  "manifest_dir": "data/manifests/mad_source_disjoint_v1",
+  "num_classes": 7,
+  "output_dir": "data/synthetic/mad_source_disjoint_v1",
+  "raw_test_csv": "data/raw/MAD_dataset/test.csv",
+  "raw_training_csv": "data/raw/MAD_dataset/training.csv",
+  "sample_rate": 16000,
+  "seed": 42,
+  "source_audio": "data/processed_mad/audio",
+  "source_csv": "data/processed_mad/metadata.csv",
+  "split_candidates": 4096,
+  "three_class_ratio": 0.15,
+  "three_class_weight_floor": 0.2,
+  "two_class_ratio": 0.35,
+  "val_ratio": 0.15
+}

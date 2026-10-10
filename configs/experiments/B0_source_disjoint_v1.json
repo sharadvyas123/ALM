@@ -1,0 +1,11 @@
+{
+  "run_id": "B0_mad_source_disjoint_v1_seed42",
+  "dataset_dir": "data/synthetic/mad_source_disjoint_v1",
+  "model": "EnhancedALMEncoder",
+  "use_fusion": false,
+  "use_class_queries": false,
+  "hop_length": 512,
+  "seed": 42,
+  "loss": "BCEWithLogitsLoss with positive weights capped at 8.0",
+  "test_set": "untouched"
+}

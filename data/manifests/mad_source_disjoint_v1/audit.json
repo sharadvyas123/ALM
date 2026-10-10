@@ -1,0 +1,101 @@
+{
+  "affected_example_files": {
+    "train": [],
+    "val": []
+  },
+  "affected_examples": {
+    "train": 0,
+    "val": 0
+  },
+  "affected_percentage": {
+    "train": 0.0,
+    "val": 0.0
+  },
+  "audio_files_checked": 6429,
+  "class_occurrences": {
+    "train": {
+      "Communication": 1207,
+      "Fighter": 1286,
+      "Footsteps": 1238,
+      "Gunshot": 1441,
+      "Helicopter": 1252,
+      "Shelling": 1297,
+      "Vehicle": 1295
+    },
+    "val": {
+      "Communication": 226,
+      "Fighter": 237,
+      "Footsteps": 198,
+      "Gunshot": 236,
+      "Helicopter": 230,
+      "Shelling": 228,
+      "Vehicle": 238
+    }
+  },
+  "complete": true,
+  "error_count": 0,
+  "errors": [],
+  "group_affected_examples": {
+    "train": 0,
+    "val": 0
+  },
+  "known_official_test_group_overlap": 0,
+  "limitations": [
+    "Counts are based on metadata identity, not audio fingerprint deduplication.",
+    "Unverified official-test video identities prevent complete parent-video independence certification.",
+    "No inference about memorization or metric inflation is made."
+  ],
+  "metadata_sha256": "621a668590e55cef9c8a3a481e3095228fee6b4763e7dd6f33b4124eb51d80a2",
+  "mix_counts": {
+    "train": {
+      "2-class": {
+        "exact_source_affected": 0,
+        "total": 1912
+      },
+      "3-class": {
+        "exact_source_affected": 0,
+        "total": 820
+      },
+      "clean": {
+        "exact_source_affected": 0,
+        "total": 2732
+      }
+    },
+    "val": {
+      "2-class": {
+        "exact_source_affected": 0,
+        "total": 338
+      },
+      "3-class": {
+        "exact_source_affected": 0,
+        "total": 145
+      },
+      "clean": {
+        "exact_source_affected": 0,
+        "total": 482
+      }
+    }
+  },
+  "overlap_samples": [],
+  "overlapping_group_count": 0,
+  "overlapping_groups": [],
+  "overlapping_source_count": 0,
+  "overlapping_sources": [],
+  "source_audio_hashes_checked": 6025,
+  "source_pools_checked": true,
+  "split_counts": {
+    "train": 5464,
+    "val": 965
+  },
+  "total_examples": 6429,
+  "unique_groups": {
+    "train": 368,
+    "val": 66
+  },
+  "unique_sources": {
+    "train": 4391,
+    "val": 771
+  },
+  "verdict": "No source-level overlap detected in the audited metadata",
+  "waveforms_reconstructed": 6429
+}

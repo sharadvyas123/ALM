@@ -1,0 +1,171 @@
+{
+  "code_sha256": {
+    "scripts/audit_source_overlap.py": "cb2d9dd1e1cd010fd22193621d9349e9a06de44186208b85840f43d337ef4427",
+    "scripts/generate_mixtures.py": "01a3660e3a16ec63de8b2d550214e51d7bc2ab3066cbb5aa901a10167bac0ddb",
+    "src/alm/data/__init__.py": "9e31537b1e79c7f032c58c67ad1140239070084a50e462d8bf3aa750a7c24a00",
+    "src/alm/data/auditing.py": "28cbde93fd639129121401fdae14ce0f004077dc19c1181084d5d7f1f94ef986",
+    "src/alm/data/generation.py": "b871411daedeb0c59cbd26315c9fc16651571bdb9e5d4eca92ba16e370aafc27",
+    "src/alm/data/mixing.py": "dcf18f0067615d1d0c6aaf4a873513848257866a3366065a17bc0e1688544694",
+    "src/alm/data/provenance.py": "6c51aee8f0e231b16bf01e137530e7b319dfa3439423c458ce74113c0643a4e7",
+    "src/alm/data/splitting.py": "e8d7d48f800898220758a701ba7d67ab7e8c22d0cc89a8f18859bdf2a8732633"
+  },
+  "command": "/home/sharad/Projects/ALM/ALM/venv/bin/python scripts/generate_mixtures.py --config configs/data/mad_source_disjoint_v1.json",
+  "config": {
+    "alpha_range": [
+      0.3,
+      0.7
+    ],
+    "clean_ratio": 0.5,
+    "counts_by_split": {
+      "train": {
+        "2-class": 1912,
+        "3-class": 820,
+        "clean": 2732
+      },
+      "val": {
+        "2-class": 338,
+        "3-class": 145,
+        "clean": 482
+      }
+    },
+    "dataset_version": "mad_source_disjoint_v1",
+    "dirichlet_concentration": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "duration_seconds": 10,
+    "eligibility_policy": "verified_provenance_only",
+    "grouping": "connected_full_folder_or_valid_youtube_id",
+    "manifest_dir": "data/manifests/mad_source_disjoint_v1",
+    "output_dir": "data/synthetic/mad_source_disjoint_v1",
+    "raw_test_csv": "data/raw/MAD_dataset/test.csv",
+    "raw_training_csv": "data/raw/MAD_dataset/training.csv",
+    "sample_rate": 16000,
+    "seed": 42,
+    "source_audio": "data/processed_mad/audio",
+    "source_csv": "data/processed_mad/metadata.csv",
+    "split_candidates": 4096,
+    "three_class_ratio": 0.15,
+    "three_class_weight_floor": 0.2,
+    "two_class_ratio": 0.35,
+    "val_ratio": 0.15
+  },
+  "config_file_sha256": "26cb5d99f209ee0c1824d486667c45a2f3a1a236bb291e33c012bced6166e41c",
+  "created_utc": "2026-10-10T13:25:46.478791+00:00",
+  "environment": {
+    "libsndfile": "1.2.2",
+    "numpy": "2.2.6",
+    "python": "3.12.3",
+    "soundfile": "0.13.1"
+  },
+  "git_head": "e3e39122a83cff1fb1828245b4c6fd0eab16660c",
+  "git_tracked_status": "M .gitignore",
+  "input_metadata_sha256": {
+    "raw_test_csv": "b2a6d4884c967845630d418562115f1cf9c087d404d4313df61c9178aca8fa58",
+    "raw_training_csv": "c310473e8ff6d08ed44dfc5d5e90d3afc5564510d21015f8ec75815098aba8e6",
+    "source_csv": "38c41f26e46dfa832bcb35d2bb58bd1a3728ecf7795fba705d98ae8625ec4e22"
+  },
+  "limitations": [
+    "Unknown video IDs for 150 official-test clips prevent full parent-video independence certification.",
+    "No fingerprint-based or cross-upload audio deduplication has been performed."
+  ],
+  "plan": {
+    "dataset_version": "mad_source_disjoint_v1",
+    "mixture_recipe_sha256": "c52cb75b7c1e5f8ca13584c919f72fdac429f5ee8dcf9f60114edb4dade5425d",
+    "output_counts": {
+      "train": {
+        "2-class": 1912,
+        "3-class": 820,
+        "clean": 2732
+      },
+      "val": {
+        "2-class": 338,
+        "3-class": 145,
+        "clean": 482
+      }
+    },
+    "provenance": {
+      "eligibility_counts": {
+        "eligible": 6025,
+        "excluded": 404,
+        "official_test": 1037
+      },
+      "exclusion_counts": {
+        "official_test_linked_group": 110,
+        "unverified_video_identity": 294
+      },
+      "folders_with_multiple_valid_video_ids": 6,
+      "invalid_or_missing_url_rows": 446,
+      "processed_rows": 7466,
+      "raw_rows": 7466,
+      "unverified_official_test_clips": 150,
+      "video_ids_in_multiple_folders": 16
+    },
+    "rng": {
+      "bit_generator": "PCG64",
+      "numpy_version": "2.2.6",
+      "source_split": [
+        42
+      ],
+      "train_clean": [
+        42,
+        0,
+        1
+      ],
+      "train_mixtures": [
+        42,
+        0,
+        2
+      ],
+      "val_clean": [
+        42,
+        1,
+        1
+      ],
+      "val_mixtures": [
+        42,
+        1,
+        2
+      ]
+    },
+    "source_assignment_sha256": "a1fc0a92279f213f6627ae9646ce83271bff3fcabe45ccd9d46f445427d26574",
+    "split": {
+      "algorithm": "seeded_group_candidates_v1",
+      "candidate_count": 4096,
+      "objective": "mean((val_class/total_class-ratio)^2)+(val_size/total_size-ratio)^2",
+      "objective_value": 8.850248315519797e-05,
+      "pools": {
+        "train": {
+          "class_counts": {
+            "Communication": 601,
+            "Fighter": 725,
+            "Footsteps": 641,
+            "Gunshot": 984,
+            "Helicopter": 696,
+            "Shelling": 722,
+            "Vehicle": 758
+          },
+          "groups": 372,
+          "sources": 5127
+        },
+        "val": {
+          "class_counts": {
+            "Communication": 112,
+            "Fighter": 126,
+            "Footsteps": 104,
+            "Gunshot": 172,
+            "Helicopter": 140,
+            "Shelling": 120,
+            "Vehicle": 124
+          },
+          "groups": 66,
+          "sources": 898
+        }
+      },
+      "seed": 42,
+      "selected_candidate_zero_based": 249,
+      "source_val_ratio_target": 0.15
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "artifact_sha256": {
+    "audit.json": "2484728bde2ae4cbffd963804b4c4229d48ad18a82147c8c34429c689646e280",
+    "generation_config.json": "d54318027be64832dcba1f77043061e3c15d83533b3d43b9502baf694e64176c",
+    "labels.json": "e52b667bb8e2dbdd6c1048c844b434f966b9c89f22817c2a2e2255f1fb01e6f4",
+    "mixture_manifest.csv": "98569da4ff7ac7b97afded9f2ce811b06b362d2a1694bda0687fdcc94fc82010",
+    "source_splits.csv": "5c342470ab69488bac9baf79155e07f90210c320ebc765d18a8dc34a036dc079"
+  },
+  "completed_utc": "2026-10-10T13:26:10.059030+00:00",
+  "dataset_artifact_sha256": {
+    "config.json": "e3ae3df13c5180b6a01c7cf2d4acef3d4b8cd932a9d866e8fcd7cf8f8fbd4cbf",
+    "metadata.csv": "621a668590e55cef9c8a3a481e3095228fee6b4763e7dd6f33b4124eb51d80a2"
+  },
+  "deterministic_replay": "passed",
+  "source_audio_hashes_verified": 6025,
+  "status": "complete"
+}

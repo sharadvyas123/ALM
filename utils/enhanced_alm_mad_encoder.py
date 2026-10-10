@@ -74,8 +74,8 @@ class TimeFreqFusionBlock(nn.Module):
     """Multi-Scale Time-Frequency Fusion Block (contribution #1).
 
     Three parallel conv branches read the backbone feature map
-    (B, C, F, T): a frequency branch (1, 3) capturing local vertical
-    patterns, a time branch (3, 1) capturing local horizontal patterns,
+    (B, C, F, T): a time branch (1, 3) capturing local temporal
+    patterns, a frequency branch (3, 1) capturing local spectral patterns,
     and a joint branch (3, 3) capturing local time-frequency patterns.
     The branches are concatenated, fused back to `channels` with a 1x1
     convolution, and added residually to the input, so the block is a
@@ -84,12 +84,14 @@ class TimeFreqFusionBlock(nn.Module):
 
     def __init__(self, channels: int = 256, dropout: float = 0.1) -> None:
         super().__init__()
-        self.freq_branch = nn.Sequential(
+        # Input layout is (B, C, frequency, time).  A (1, 3) kernel spans
+        # time; a (3, 1) kernel spans frequency.
+        self.time_branch = nn.Sequential(
             nn.Conv2d(channels, channels, kernel_size=(1, 3), padding=(0, 1), bias=False),
             nn.BatchNorm2d(channels),
             nn.GELU(),
         )
-        self.time_branch = nn.Sequential(
+        self.freq_branch = nn.Sequential(
             nn.Conv2d(channels, channels, kernel_size=(3, 1), padding=(1, 0), bias=False),
             nn.BatchNorm2d(channels),
             nn.GELU(),
@@ -107,8 +109,8 @@ class TimeFreqFusionBlock(nn.Module):
         self.dropout = nn.Dropout2d(dropout)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        freq = self.freq_branch(x)
         time = self.time_branch(x)
+        freq = self.freq_branch(x)
         joint = self.joint_branch(x)
         fused = self.fuse(torch.cat([freq, time, joint], dim=1))
         fused = self.dropout(fused)
