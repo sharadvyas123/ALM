@@ -1,0 +1,16 @@
+{
+  "below_db": -15.0,
+  "below_threshold_fraction": 0.11311150909605053,
+  "below_threshold_records": 1200,
+  "dataset_dir": "/home/sharad/Projects/ALM/ALM/data/synthetic/mad_source_disjoint_v1",
+  "finite_snr_records": 7395,
+  "hop_length": 512,
+  "infinite_snr_records": 3214,
+  "mask_policy": "strict source power > 50% of total power, non-silent active bins only",
+  "n_fft": 1024,
+  "padding_policy": "per-source active frames use duration_original; zero-padded tails excluded",
+  "records": 10609,
+  "sample_rate": 16000,
+  "source_audio": "/home/sharad/Projects/ALM/ALM/data/processed_mad/audio",
+  "source_metadata": "/home/sharad/Projects/ALM/ALM/data/processed_mad/metadata.csv"
+}

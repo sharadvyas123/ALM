@@ -1,0 +1,142 @@
+{
+  "run_id": "B0_mad_source_disjoint_v1_seed42",
+  "created": "2026-10-11T00:25:42",
+  "git_commit": "6f5cde56ffe33f95f4df51d6f3e47b69372edd5e",
+  "data_config": {
+    "dataset_version": "mad_source_disjoint_v1",
+    "source_csv": "data/processed_mad/metadata.csv",
+    "source_audio": "data/processed_mad/audio",
+    "raw_training_csv": "data/raw/MAD_dataset/training.csv",
+    "raw_test_csv": "data/raw/MAD_dataset/test.csv",
+    "output_dir": "data/synthetic/mad_source_disjoint_v1",
+    "manifest_dir": "data/manifests/mad_source_disjoint_v1",
+    "eligibility_policy": "verified_provenance_only",
+    "grouping": "connected_full_folder_or_valid_youtube_id",
+    "seed": 42,
+    "val_ratio": 0.15,
+    "split_candidates": 4096,
+    "sample_rate": 16000,
+    "duration_seconds": 10,
+    "clean_ratio": 0.5,
+    "two_class_ratio": 0.35,
+    "three_class_ratio": 0.15,
+    "alpha_range": [
+      0.3,
+      0.7
+    ],
+    "dirichlet_concentration": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "three_class_weight_floor": 0.2,
+    "counts_by_split": {
+      "train": {
+        "clean": 2732,
+        "2-class": 1912,
+        "3-class": 820
+      },
+      "val": {
+        "clean": 482,
+        "2-class": 338,
+        "3-class": 145
+      }
+    }
+  },
+  "experiment_config": {
+    "run_id": "B0_mad_source_disjoint_v1_seed42",
+    "dataset_dir": "data/synthetic/mad_source_disjoint_v1",
+    "model": "EnhancedALMEncoder",
+    "use_fusion": false,
+    "use_class_queries": false,
+    "hop_length": 512,
+    "seed": 42,
+    "loss": "BCEWithLogitsLoss with positive weights capped at 8.0",
+    "test_set": "untouched"
+  },
+  "hyperparameters": {
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "max_epochs": 60,
+    "pos_weight_cap": 8.0,
+    "eta_min": 0.0,
+    "num_workers": 0
+  },
+  "hyperparameter_sources": {
+    "batch_size": "user override in notebook",
+    "lr": "user override in notebook",
+    "weight_decay": "user override in notebook",
+    "max_epochs": "B0 task statement (maximum 60 epochs); not in config",
+    "pos_weight_cap": "experiment config 'loss' string (capped at 8.0)",
+    "eta_min": "PyTorch CosineAnnealingLR default (NOT from project) - confirm",
+    "num_workers": "notebook default (NOT from project) - confirm"
+  },
+  "model_class": "EnhancedALMEncoder",
+  "model_kwargs": {
+    "use_fusion": false,
+    "use_class_queries": false
+  },
+  "model_defaults": {
+    "embed_dim": 256,
+    "num_classes": 7,
+    "num_heads": 8,
+    "num_layers": 6,
+    "ff_dim": 1024,
+    "dropout": 0.1,
+    "pooling": "attention",
+    "use_fusion": true,
+    "use_class_queries": true,
+    "max_time_frames": 100
+  },
+  "trainable_parameters": 6463655,
+  "class_names": [
+    "Communication",
+    "Gunshot",
+    "Footsteps",
+    "Shelling",
+    "Vehicle",
+    "Helicopter",
+    "Fighter"
+  ],
+  "pos_weight": [
+    3.526926279067993,
+    2.791811227798462,
+    3.4135701656341553,
+    3.212798833847046,
+    3.2193050384521484,
+    3.3642172813415527,
+    3.248833656311035
+  ],
+  "pos_weight_warnings": [],
+  "audio": {
+    "sr": 16000,
+    "seconds": 10,
+    "n_fft": 1024,
+    "hop": 512,
+    "n_mels": 128,
+    "log_eps": 1e-06
+  },
+  "seed": 42,
+  "device": "cuda",
+  "library_versions": {
+    "torch": "2.14.1+cu132",
+    "numpy": "2.2.6",
+    "soundfile": "0.13.1",
+    "pandas": "2.3.3",
+    "tqdm": "4.67.3",
+    "scikit-learn": "1.7.2",
+    "torchaudio": "2.11.1+cu132",
+    "matplotlib": "3.10.8",
+    "python": "3.12.3"
+  },
+  "splits_used": [
+    "train",
+    "val"
+  ],
+  "official_test_used": false,
+  "checkpoint_selection": "best validation mAP",
+  "loss": "BCEWithLogitsLoss(pos_weight capped at 8.0, training labels only)",
+  "optimizer": "AdamW",
+  "scheduler": "CosineAnnealingLR stepped per epoch"
+}

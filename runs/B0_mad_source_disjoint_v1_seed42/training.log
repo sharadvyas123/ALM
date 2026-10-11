@@ -1,0 +1,139 @@
+2026-10-11 00:25:42 | INFO | Experiment startup | run_id=B0_mad_source_disjoint_v1_seed42 | dir=/home/sharad/Projects/ALM/ALM/runs/B0_mad_source_disjoint_v1_seed42
+2026-10-11 00:25:42 | INFO | Dataset version=mad_source_disjoint_v1 | audit passed | train=5464 val=965 | limitations: parent-video identity unknown for 150 official-test clips; no audio-fingerprint dedup
+2026-10-11 00:25:42 | INFO | Env | python=3.12.3 torch=2.14.1+cu132 numpy=2.2.6 soundfile=0.13.1 | device=cuda | seed=42
+2026-10-11 00:25:42 | INFO | Model flags | {'use_fusion': False, 'use_class_queries': False} | trainable_params=6463655
+2026-10-11 00:25:42 | INFO | Hyperparameters | {'batch_size': 32, 'lr': 0.0003, 'weight_decay': 0.01, 'max_epochs': 60, 'pos_weight_cap': 8.0, 'eta_min': 0.0, 'num_workers': 0} | sources={'batch_size': 'user override in notebook', 'lr': 'user override in notebook', 'weight_decay': 'user override in notebook', 'max_epochs': 'B0 task statement (maximum 60 epochs); not in config', 'pos_weight_cap': "experiment config 'loss' string (capped at 8.0)", 'eta_min': 'PyTorch CosineAnnealingLR default (NOT from project) - confirm', 'num_workers': 'notebook default (NOT from project) - confirm'}
+2026-10-11 00:25:42 | INFO | DataLoaders | batch_size=32 workers=0 train_batches=171 val_batches=31
+2026-10-11 00:25:42 | INFO | pos_weight=[3.5269999504089355, 2.7920000553131104, 3.4140000343322754, 3.2130000591278076, 3.2190001010894775, 3.364000082015991, 3.249000072479248]
+2026-10-11 00:25:42 | WARNING | Hyperparameter eta_min=0.0 uses a non-project default (PyTorch CosineAnnealingLR default (NOT from project) - confirm)
+2026-10-11 00:25:42 | WARNING | Hyperparameter num_workers=0 uses a non-project default (notebook default (NOT from project) - confirm)
+2026-10-11 00:25:49 | INFO | TRAINING START | epochs=60 | device=cuda
+2026-10-11 00:25:49 | DEBUG | Epoch 1/60 start
+2026-10-11 00:26:57 | INFO | Best checkpoint updated | epoch=1 | val_mAP=0.6853 | /home/sharad/Projects/ALM/ALM/runs/B0_mad_source_disjoint_v1_seed42/best_model.pt
+2026-10-11 00:26:57 | INFO | Epoch 1/60 | train_loss=0.8667 | val_loss=0.7504 | val_mAP=0.6853 | lr=3.000e-04 | time=68.2s | best_updated=True
+2026-10-11 00:26:57 | DEBUG | Epoch 2/60 start
+2026-10-11 00:28:06 | INFO | Best checkpoint updated | epoch=2 | val_mAP=0.7893 | /home/sharad/Projects/ALM/ALM/runs/B0_mad_source_disjoint_v1_seed42/best_model.pt
+2026-10-11 00:28:06 | INFO | Epoch 2/60 | train_loss=0.7153 | val_loss=0.6380 | val_mAP=0.7893 | lr=2.998e-04 | time=68.9s | best_updated=True
+2026-10-11 00:28:06 | DEBUG | Epoch 3/60 start
+2026-10-11 00:29:16 | INFO | Best checkpoint updated | epoch=3 | val_mAP=0.7966 | /home/sharad/Projects/ALM/ALM/runs/B0_mad_source_disjoint_v1_seed42/best_model.pt
+2026-10-11 00:29:16 | INFO | Epoch 3/60 | train_loss=0.6430 | val_loss=0.6148 | val_mAP=0.7966 | lr=2.992e-04 | time=70.0s | best_updated=True
+2026-10-11 00:29:16 | DEBUG | Epoch 4/60 start
+2026-10-11 00:30:25 | INFO | Best checkpoint updated | epoch=4 | val_mAP=0.8149 | /home/sharad/Projects/ALM/ALM/runs/B0_mad_source_disjoint_v1_seed42/best_model.pt
+2026-10-11 00:30:25 | INFO | Epoch 4/60 | train_loss=0.5899 | val_loss=0.6035 | val_mAP=0.8149 | lr=2.982e-04 | time=69.2s | best_updated=True
+2026-10-11 00:30:25 | DEBUG | Epoch 5/60 start
+2026-10-11 00:31:34 | INFO | Best checkpoint updated | epoch=5 | val_mAP=0.8218 | /home/sharad/Projects/ALM/ALM/runs/B0_mad_source_disjoint_v1_seed42/best_model.pt
+2026-10-11 00:31:34 | INFO | Epoch 5/60 | train_loss=0.5574 | val_loss=0.5746 | val_mAP=0.8218 | lr=2.967e-04 | time=68.9s | best_updated=True
+2026-10-11 00:31:34 | DEBUG | Epoch 6/60 start
+2026-10-11 00:32:43 | INFO | Best checkpoint updated | epoch=6 | val_mAP=0.8454 | /home/sharad/Projects/ALM/ALM/runs/B0_mad_source_disjoint_v1_seed42/best_model.pt
+2026-10-11 00:32:43 | INFO | Epoch 6/60 | train_loss=0.5319 | val_loss=0.5575 | val_mAP=0.8454 | lr=2.949e-04 | time=68.8s | best_updated=True
+2026-10-11 00:32:43 | DEBUG | Epoch 7/60 start
+2026-10-11 00:33:52 | INFO | Epoch 7/60 | train_loss=0.5030 | val_loss=0.5703 | val_mAP=0.8383 | lr=2.927e-04 | time=69.7s | best_updated=False
+2026-10-11 00:33:52 | DEBUG | Epoch 8/60 start
+2026-10-11 00:35:00 | INFO | Epoch 8/60 | train_loss=0.4744 | val_loss=0.5561 | val_mAP=0.8443 | lr=2.900e-04 | time=67.8s | best_updated=False
+2026-10-11 00:35:00 | DEBUG | Epoch 9/60 start
+2026-10-11 00:36:08 | INFO | Best checkpoint updated | epoch=9 | val_mAP=0.8534 | /home/sharad/Projects/ALM/ALM/runs/B0_mad_source_disjoint_v1_seed42/best_model.pt
+2026-10-11 00:36:08 | INFO | Epoch 9/60 | train_loss=0.4599 | val_loss=0.5327 | val_mAP=0.8534 | lr=2.870e-04 | time=67.8s | best_updated=True
+2026-10-11 00:36:08 | DEBUG | Epoch 10/60 start
+2026-10-11 00:37:16 | INFO | Epoch 10/60 | train_loss=0.4297 | val_loss=0.5713 | val_mAP=0.8425 | lr=2.837e-04 | time=67.7s | best_updated=False
+2026-10-11 00:37:16 | DEBUG | Epoch 11/60 start
+2026-10-11 00:38:23 | INFO | Epoch 11/60 | train_loss=0.4109 | val_loss=0.5742 | val_mAP=0.8425 | lr=2.799e-04 | time=67.9s | best_updated=False
+2026-10-11 00:38:23 | DEBUG | Epoch 12/60 start
+2026-10-11 00:39:30 | INFO | Epoch 12/60 | train_loss=0.3873 | val_loss=0.5957 | val_mAP=0.8369 | lr=2.758e-04 | time=66.9s | best_updated=False
+2026-10-11 00:39:30 | DEBUG | Epoch 13/60 start
+2026-10-11 00:40:36 | INFO | Epoch 13/60 | train_loss=0.3674 | val_loss=0.5609 | val_mAP=0.8495 | lr=2.714e-04 | time=65.9s | best_updated=False
+2026-10-11 00:40:36 | DEBUG | Epoch 14/60 start
+2026-10-11 00:41:42 | INFO | Epoch 14/60 | train_loss=0.3470 | val_loss=0.5641 | val_mAP=0.8451 | lr=2.666e-04 | time=65.8s | best_updated=False
+2026-10-11 00:41:42 | DEBUG | Epoch 15/60 start
+2026-10-11 00:42:48 | INFO | Epoch 15/60 | train_loss=0.3321 | val_loss=0.6016 | val_mAP=0.8446 | lr=2.615e-04 | time=66.0s | best_updated=False
+2026-10-11 00:42:48 | DEBUG | Epoch 16/60 start
+2026-10-11 00:43:54 | INFO | Epoch 16/60 | train_loss=0.3114 | val_loss=0.5891 | val_mAP=0.8452 | lr=2.561e-04 | time=65.9s | best_updated=False
+2026-10-11 00:43:54 | DEBUG | Epoch 17/60 start
+2026-10-11 00:45:00 | INFO | Epoch 17/60 | train_loss=0.2863 | val_loss=0.6464 | val_mAP=0.8381 | lr=2.504e-04 | time=66.0s | best_updated=False
+2026-10-11 00:45:00 | DEBUG | Epoch 18/60 start
+2026-10-11 00:46:06 | INFO | Epoch 18/60 | train_loss=0.2711 | val_loss=0.6174 | val_mAP=0.8415 | lr=2.444e-04 | time=66.0s | best_updated=False
+2026-10-11 00:46:06 | DEBUG | Epoch 19/60 start
+2026-10-11 00:47:12 | INFO | Epoch 19/60 | train_loss=0.2525 | val_loss=0.6327 | val_mAP=0.8384 | lr=2.382e-04 | time=66.0s | best_updated=False
+2026-10-11 00:47:12 | DEBUG | Epoch 20/60 start
+2026-10-11 00:48:18 | INFO | Epoch 20/60 | train_loss=0.2317 | val_loss=0.6438 | val_mAP=0.8331 | lr=2.317e-04 | time=66.0s | best_updated=False
+2026-10-11 00:48:18 | DEBUG | Epoch 21/60 start
+2026-10-11 00:49:24 | INFO | Epoch 21/60 | train_loss=0.2052 | val_loss=0.6751 | val_mAP=0.8367 | lr=2.250e-04 | time=66.0s | best_updated=False
+2026-10-11 00:49:24 | DEBUG | Epoch 22/60 start
+2026-10-11 00:50:30 | INFO | Epoch 22/60 | train_loss=0.1987 | val_loss=0.6791 | val_mAP=0.8297 | lr=2.181e-04 | time=65.9s | best_updated=False
+2026-10-11 00:50:30 | DEBUG | Epoch 23/60 start
+2026-10-11 00:51:36 | INFO | Epoch 23/60 | train_loss=0.1707 | val_loss=0.7265 | val_mAP=0.8259 | lr=2.110e-04 | time=66.3s | best_updated=False
+2026-10-11 00:51:36 | DEBUG | Epoch 24/60 start
+2026-10-11 00:52:42 | INFO | Epoch 24/60 | train_loss=0.1560 | val_loss=0.7314 | val_mAP=0.8399 | lr=2.038e-04 | time=66.0s | best_updated=False
+2026-10-11 00:52:42 | DEBUG | Epoch 25/60 start
+2026-10-11 00:53:49 | INFO | Epoch 25/60 | train_loss=0.1438 | val_loss=0.7928 | val_mAP=0.8300 | lr=1.964e-04 | time=66.1s | best_updated=False
+2026-10-11 00:53:49 | DEBUG | Epoch 26/60 start
+2026-10-11 00:54:55 | INFO | Epoch 26/60 | train_loss=0.1254 | val_loss=0.8522 | val_mAP=0.8301 | lr=1.888e-04 | time=66.3s | best_updated=False
+2026-10-11 00:54:55 | DEBUG | Epoch 27/60 start
+2026-10-11 00:56:01 | INFO | Epoch 27/60 | train_loss=0.1265 | val_loss=0.8060 | val_mAP=0.8348 | lr=1.812e-04 | time=66.3s | best_updated=False
+2026-10-11 00:56:01 | DEBUG | Epoch 28/60 start
+2026-10-11 00:57:07 | INFO | Epoch 28/60 | train_loss=0.1052 | val_loss=0.8439 | val_mAP=0.8338 | lr=1.735e-04 | time=65.9s | best_updated=False
+2026-10-11 00:57:07 | DEBUG | Epoch 29/60 start
+2026-10-11 00:58:13 | INFO | Epoch 29/60 | train_loss=0.0987 | val_loss=0.9062 | val_mAP=0.8313 | lr=1.657e-04 | time=66.1s | best_updated=False
+2026-10-11 00:58:13 | DEBUG | Epoch 30/60 start
+2026-10-11 00:59:19 | INFO | Epoch 30/60 | train_loss=0.0862 | val_loss=0.9118 | val_mAP=0.8227 | lr=1.579e-04 | time=66.4s | best_updated=False
+2026-10-11 00:59:19 | DEBUG | Epoch 31/60 start
+2026-10-11 01:00:26 | INFO | Epoch 31/60 | train_loss=0.0750 | val_loss=0.9719 | val_mAP=0.8266 | lr=1.500e-04 | time=66.3s | best_updated=False
+2026-10-11 01:00:26 | DEBUG | Epoch 32/60 start
+2026-10-11 01:01:32 | INFO | Epoch 32/60 | train_loss=0.0680 | val_loss=0.9369 | val_mAP=0.8274 | lr=1.421e-04 | time=66.0s | best_updated=False
+2026-10-11 01:01:32 | DEBUG | Epoch 33/60 start
+2026-10-11 01:02:38 | INFO | Epoch 33/60 | train_loss=0.0601 | val_loss=0.9869 | val_mAP=0.8316 | lr=1.343e-04 | time=66.2s | best_updated=False
+2026-10-11 01:02:38 | DEBUG | Epoch 34/60 start
+2026-10-11 01:03:44 | INFO | Epoch 34/60 | train_loss=0.0537 | val_loss=0.9990 | val_mAP=0.8273 | lr=1.265e-04 | time=66.2s | best_updated=False
+2026-10-11 01:03:44 | DEBUG | Epoch 35/60 start
+2026-10-11 01:04:50 | INFO | Epoch 35/60 | train_loss=0.0565 | val_loss=1.0272 | val_mAP=0.8293 | lr=1.188e-04 | time=66.1s | best_updated=False
+2026-10-11 01:04:50 | DEBUG | Epoch 36/60 start
+2026-10-11 01:05:56 | INFO | Epoch 36/60 | train_loss=0.0479 | val_loss=1.0570 | val_mAP=0.8259 | lr=1.112e-04 | time=66.1s | best_updated=False
+2026-10-11 01:05:56 | DEBUG | Epoch 37/60 start
+2026-10-11 01:07:03 | INFO | Epoch 37/60 | train_loss=0.0378 | val_loss=1.1014 | val_mAP=0.8219 | lr=1.036e-04 | time=66.1s | best_updated=False
+2026-10-11 01:07:03 | DEBUG | Epoch 38/60 start
+2026-10-11 01:08:09 | INFO | Epoch 38/60 | train_loss=0.0401 | val_loss=1.0492 | val_mAP=0.8274 | lr=9.624e-05 | time=66.1s | best_updated=False
+2026-10-11 01:08:09 | DEBUG | Epoch 39/60 start
+2026-10-11 01:09:15 | INFO | Epoch 39/60 | train_loss=0.0339 | val_loss=1.1480 | val_mAP=0.8180 | lr=8.899e-05 | time=66.0s | best_updated=False
+2026-10-11 01:09:15 | DEBUG | Epoch 40/60 start
+2026-10-11 01:10:21 | INFO | Epoch 40/60 | train_loss=0.0307 | val_loss=1.1155 | val_mAP=0.8293 | lr=8.190e-05 | time=66.0s | best_updated=False
+2026-10-11 01:10:21 | DEBUG | Epoch 41/60 start
+2026-10-11 01:11:27 | INFO | Epoch 41/60 | train_loss=0.0302 | val_loss=1.1131 | val_mAP=0.8268 | lr=7.500e-05 | time=66.0s | best_updated=False
+2026-10-11 01:11:27 | DEBUG | Epoch 42/60 start
+2026-10-11 01:12:33 | INFO | Epoch 42/60 | train_loss=0.0275 | val_loss=1.1407 | val_mAP=0.8253 | lr=6.830e-05 | time=66.4s | best_updated=False
+2026-10-11 01:12:33 | DEBUG | Epoch 43/60 start
+2026-10-11 01:13:39 | INFO | Epoch 43/60 | train_loss=0.0233 | val_loss=1.1660 | val_mAP=0.8199 | lr=6.183e-05 | time=66.2s | best_updated=False
+2026-10-11 01:13:39 | DEBUG | Epoch 44/60 start
+2026-10-11 01:14:46 | INFO | Epoch 44/60 | train_loss=0.0199 | val_loss=1.1419 | val_mAP=0.8257 | lr=5.560e-05 | time=66.2s | best_updated=False
+2026-10-11 01:14:46 | DEBUG | Epoch 45/60 start
+2026-10-11 01:15:53 | INFO | Epoch 45/60 | train_loss=0.0195 | val_loss=1.1925 | val_mAP=0.8223 | lr=4.963e-05 | time=67.2s | best_updated=False
+2026-10-11 01:15:53 | DEBUG | Epoch 46/60 start
+2026-10-11 01:17:01 | INFO | Epoch 46/60 | train_loss=0.0194 | val_loss=1.2042 | val_mAP=0.8232 | lr=4.393e-05 | time=68.3s | best_updated=False
+2026-10-11 01:17:01 | DEBUG | Epoch 47/60 start
+2026-10-11 01:18:09 | INFO | Epoch 47/60 | train_loss=0.0174 | val_loss=1.2140 | val_mAP=0.8236 | lr=3.853e-05 | time=67.7s | best_updated=False
+2026-10-11 01:18:09 | DEBUG | Epoch 48/60 start
+2026-10-11 01:19:16 | INFO | Epoch 48/60 | train_loss=0.0181 | val_loss=1.2209 | val_mAP=0.8233 | lr=3.343e-05 | time=67.6s | best_updated=False
+2026-10-11 01:19:16 | DEBUG | Epoch 49/60 start
+2026-10-11 01:20:24 | INFO | Epoch 49/60 | train_loss=0.0148 | val_loss=1.2115 | val_mAP=0.8248 | lr=2.865e-05 | time=67.9s | best_updated=False
+2026-10-11 01:20:24 | DEBUG | Epoch 50/60 start
+2026-10-11 01:21:32 | INFO | Epoch 50/60 | train_loss=0.0148 | val_loss=1.2190 | val_mAP=0.8246 | lr=2.420e-05 | time=67.7s | best_updated=False
+2026-10-11 01:21:32 | DEBUG | Epoch 51/60 start
+2026-10-11 01:22:41 | INFO | Epoch 51/60 | train_loss=0.0132 | val_loss=1.2285 | val_mAP=0.8263 | lr=2.010e-05 | time=68.4s | best_updated=False
+2026-10-11 01:22:41 | DEBUG | Epoch 52/60 start
+2026-10-11 01:23:49 | INFO | Epoch 52/60 | train_loss=0.0138 | val_loss=1.2003 | val_mAP=0.8267 | lr=1.635e-05 | time=68.1s | best_updated=False
+2026-10-11 01:23:49 | DEBUG | Epoch 53/60 start
+2026-10-11 01:24:57 | INFO | Epoch 53/60 | train_loss=0.0135 | val_loss=1.2329 | val_mAP=0.8246 | lr=1.297e-05 | time=68.0s | best_updated=False
+2026-10-11 01:24:57 | DEBUG | Epoch 54/60 start
+2026-10-11 01:26:05 | INFO | Epoch 54/60 | train_loss=0.0133 | val_loss=1.2121 | val_mAP=0.8264 | lr=9.963e-06 | time=68.2s | best_updated=False
+2026-10-11 01:26:05 | DEBUG | Epoch 55/60 start
+2026-10-11 01:27:13 | INFO | Epoch 55/60 | train_loss=0.0116 | val_loss=1.2485 | val_mAP=0.8254 | lr=7.342e-06 | time=68.3s | best_updated=False
+2026-10-11 01:27:13 | DEBUG | Epoch 56/60 start
+2026-10-11 01:28:22 | INFO | Epoch 56/60 | train_loss=0.0116 | val_loss=1.2402 | val_mAP=0.8254 | lr=5.111e-06 | time=68.1s | best_updated=False
+2026-10-11 01:28:22 | DEBUG | Epoch 57/60 start
+2026-10-11 01:29:29 | INFO | Epoch 57/60 | train_loss=0.0107 | val_loss=1.2317 | val_mAP=0.8253 | lr=3.278e-06 | time=67.9s | best_updated=False
+2026-10-11 01:29:29 | DEBUG | Epoch 58/60 start
+2026-10-11 01:30:38 | INFO | Epoch 58/60 | train_loss=0.0105 | val_loss=1.2353 | val_mAP=0.8257 | lr=1.847e-06 | time=68.1s | best_updated=False
+2026-10-11 01:30:38 | DEBUG | Epoch 59/60 start
+2026-10-11 01:31:46 | INFO | Epoch 59/60 | train_loss=0.0114 | val_loss=1.2420 | val_mAP=0.8255 | lr=8.217e-07 | time=68.0s | best_updated=False
+2026-10-11 01:31:46 | DEBUG | Epoch 60/60 start
+2026-10-11 01:32:54 | INFO | Epoch 60/60 | train_loss=0.0115 | val_loss=1.2372 | val_mAP=0.8257 | lr=2.056e-07 | time=68.2s | best_updated=False
+2026-10-11 01:32:54 | INFO | TRAINING COMPLETE | epochs=60 | best_epoch=9 | best_val_mAP=0.8534 | total_time=4025.2s
+2026-10-11 01:32:55 | INFO | Final integrity checks passed (16 checks).

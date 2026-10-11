@@ -8,3 +8,6 @@ ALM_MAD_Project_Context_Updated.md
 multilabel_mad/
 opencode.json
 Sessions/
+# model checkpoints stay local (too large / LFS flaky)
+runs/**/*.pt
+runs/_backup*/

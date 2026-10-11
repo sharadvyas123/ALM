@@ -1,0 +1,61 @@
+{
+  "amp": true,
+  "batch_size": 16,
+  "checkpoint_rule": "highest validation mAP",
+  "class_order": [
+    "Communication",
+    "Gunshot",
+    "Footsteps",
+    "Shelling",
+    "Vehicle",
+    "Helicopter",
+    "Fighter"
+  ],
+  "created_utc": "2026-10-10T17:32:35.647130+00:00",
+  "cuda_device": "NVIDIA GeForce RTX 2050",
+  "dataset_dir": "/home/sharad/Projects/ALM/ALM/data/synthetic/mad_source_disjoint_v1",
+  "device": "cuda",
+  "epochs": 60,
+  "metadata_sha256": "621a668590e55cef9c8a3a481e3095228fee6b4763e7dd6f33b4124eb51d80a2",
+  "model": {
+    "embed_dim": 256,
+    "ff_dim": 1024,
+    "max_time_frames": 100,
+    "name": "EnhancedALMEncoder",
+    "num_heads": 8,
+    "num_layers": 6,
+    "use_class_queries": false,
+    "use_fusion": false
+  },
+  "num_workers": 0,
+  "optimizer": {
+    "lr": 0.0001,
+    "name": "AdamW",
+    "weight_decay": 0.0001
+  },
+  "pos_weight": [
+    3.526926279067993,
+    2.791811227798462,
+    3.4135701656341553,
+    3.212798833847046,
+    3.2193050384521484,
+    3.3642172813415527,
+    3.248833656311035
+  ],
+  "preprocessing": {
+    "duration_seconds": 10,
+    "f_max": 8000.0,
+    "f_min": 20.0,
+    "freq_mask_param": 27,
+    "hop_length": 512,
+    "n_fft": 1024,
+    "n_mels": 128,
+    "num_samples": 160000,
+    "sample_rate": 16000,
+    "time_mask_param": 40
+  },
+  "python": "3.12.3",
+  "run_id": "B0_mad_source_disjoint_v1_seed42",
+  "seed": 42,
+  "torch": "2.14.1+cu132"
+}
