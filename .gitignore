@@ -11,3 +11,6 @@ Sessions/
 # model checkpoints stay local (too large / LFS flaky)
 runs/**/*.pt
 runs/_backup*/
+
+research/audibility/**/*.csv
+runs/**/metrics.csv
