@@ -14,3 +14,4 @@ runs/_backup*/
 
 research/audibility/**/*.csv
 runs/**/metrics.csv
+runs/**/audibility_cache/

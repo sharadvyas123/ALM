@@ -1,0 +1,21 @@
+{
+  "cuda_available": true,
+  "cuda_version": "13.2",
+  "git_commit": "ed5bfc779a59166d5ce4af3e13dcd4190b785d69",
+  "git_status": "M .gitignore\n M configs/experiments/B0_source_disjoint_v1.json\n?? configs/experiments/B1_fusion_source_disjoint_v1.json\n?? configs/experiments/B2_class_queries_source_disjoint_v1.json\n?? configs/experiments/B3_mask_supervised_source_disjoint_v1.json\n?? configs/experiments/B4_audibility_labels_source_disjoint_v1.json\n?? configs/experiments/B5_audibility_loss_source_disjoint_v1.json\n?? configs/experiments/B6_asymmetric_loss_source_disjoint_v1.json\n?? configs/experiments/B7_confusion_weights_source_disjoint_v1.json\n?? configs/experiments/B7_operational_costs_template.json\n?? configs/experiments/FULL_proposed_alm_source_disjoint_v1.json\n?? configs/experiments/README.md\n?? notebooks/proposed_alm_framework.ipynb\n?? runs/FULL_proposed_alm_seed42/\n?? src/alm/config.py\n?? src/alm/data/audibility.py\n?? src/alm/data/contributions.py\n?? src/alm/data/dataset.py\n?? src/alm/data/labels.py\n?? src/alm/data/preprocessing.py\n?? src/alm/data/verification.py\n?? src/alm/losses/\n?? src/alm/models/\n?? src/alm/progress.py\n?? src/alm/training/\n?? tests/test_proposed_framework.py",
+  "gpu": "NVIDIA GeForce RTX 2050",
+  "packages": {
+    "matplotlib": "3.10.8",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "soundfile": "0.13.1",
+    "torch": "2.14.1+cu132",
+    "torchaudio": "2.11.1+cu132",
+    "tqdm": "4.67.3"
+  },
+  "pid": 84335,
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "torch": "2.14.1+cu132"
+}

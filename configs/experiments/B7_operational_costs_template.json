@@ -1,0 +1,13 @@
+{
+  "run_id": "B7_operational_costs_REQUIRES_DOMAIN_MATRIX",
+  "seed": 42,
+  "dataset_dir": "data/synthetic/mad_source_disjoint_v1",
+  "class_order": ["Communication", "Gunshot", "Footsteps", "Shelling", "Vehicle", "Helicopter", "Fighter"],
+  "model": {"name": "ALMModel", "use_fusion": false, "use_class_queries": false, "use_mask_supervision": false, "use_audibility_labels": false, "use_audibility_loss": false, "use_asymmetric_loss": false, "use_confusion_weights": false, "use_operational_costs": false},
+  "preprocessing": {"sample_rate": 16000, "duration_seconds": 10, "n_fft": 1024, "hop_length": 512, "n_mels": 128, "f_min": 0.0, "f_max": 8000.0, "log_epsilon": 1e-6, "pad_mode": "reflect"},
+  "audibility": {"policy": "union", "threshold_db": -15.0, "center_db": -15.0, "temperature_db": 6.0, "soft_floor": 0.1},
+  "loss": {"classification": "bce", "pos_weight_cap": 8.0, "lambda_mask": 0.0, "asl_gamma_pos": 0.0, "asl_gamma_neg": 4.0, "asl_clip": 0.05, "audibility_floor": 0.25},
+  "training": {"batch_size": 32, "epochs": 60, "lr": 0.0003, "weight_decay": 0.01, "grad_clip": 1.0, "amp": true, "num_workers": 0, "scheduler": "cosine", "eta_min": 0.0, "checkpoint_metric": "mAP"},
+  "operational_costs": {"matrix": null, "enabled": false, "requires_external_7x7_matrix": true},
+  "dataset_audit": "data/manifests/mad_source_disjoint_v1/COMPLETE.json", "official_test": "untouched"
+}
