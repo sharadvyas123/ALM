@@ -1,0 +1,48 @@
+{
+  "audio_files_checked": 5143,
+  "class_occurrences": {
+    "train": {
+      "Communication": 955,
+      "Fighter": 976,
+      "Footsteps": 885,
+      "Gunshot": 1053,
+      "Helicopter": 987,
+      "Shelling": 977,
+      "Vehicle": 955
+    },
+    "val": {
+      "Communication": 220,
+      "Fighter": 252,
+      "Footsteps": 258,
+      "Gunshot": 268,
+      "Helicopter": 230,
+      "Shelling": 227,
+      "Vehicle": 244
+    }
+  },
+  "complete": true,
+  "error_count": 0,
+  "errors": [],
+  "known_official_test_group_overlap": 0,
+  "limitations": [
+    "No audio fingerprint or cross-upload deduplication is performed."
+  ],
+  "metadata_sha256": "27613829ec6cc516720867791caa55fa5926ce5d6cd4f4750e603cd100ab4249",
+  "overlapping_group_count": 0,
+  "overlapping_source_count": 0,
+  "source_pools_checked": true,
+  "split_counts": {
+    "train": 4114,
+    "val": 1029
+  },
+  "total_examples": 5143,
+  "unique_groups": {
+    "train": 263,
+    "val": 87
+  },
+  "unique_sources": {
+    "train": 3220,
+    "val": 943
+  },
+  "verdict": "No source-level overlap detected"
+}

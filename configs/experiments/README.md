@@ -14,3 +14,8 @@ remains disabled until a domain expert supplies and documents a 7x7 matrix.
 justified components: fusion, spatial class queries, mask supervision,
 soft-audibility targets, audibility-conditioned ASL, and training-derived
 confusion weighting. It does not invent operational costs.
+
+The separate nested five-fold protocol is configured in
+`CV5_proposed_alm_source_grouped_v1.json`; see
+`research/experiments/cv5_protocol.md` for preparation, resume, metrics, figures,
+and final-test isolation.

@@ -1,0 +1,216 @@
+{
+  "checkpoint_epoch": 21,
+  "confusion_matrix": [
+    [
+      [
+        939,
+        58
+      ],
+      [
+        57,
+        232
+      ]
+    ],
+    [
+      [
+        922,
+        38
+      ],
+      [
+        56,
+        270
+      ]
+    ],
+    [
+      [
+        940,
+        69
+      ],
+      [
+        79,
+        198
+      ]
+    ],
+    [
+      [
+        952,
+        29
+      ],
+      [
+        66,
+        239
+      ]
+    ],
+    [
+      [
+        912,
+        80
+      ],
+      [
+        57,
+        237
+      ]
+    ],
+    [
+      [
+        905,
+        62
+      ],
+      [
+        101,
+        218
+      ]
+    ],
+    [
+      [
+        934,
+        40
+      ],
+      [
+        73,
+        239
+      ]
+    ]
+  ],
+  "exact_match": 0.5466562986003111,
+  "fold": 1,
+  "hamming_loss": 0.09608975783159297,
+  "inner_best_epoch": 21,
+  "inner_threshold_objective": 0.7715047747235116,
+  "label_accuracy": 0.903910242168407,
+  "label_ranking_average_precision": 0.9103452319237728,
+  "mAP": 0.8567630376429081,
+  "macro_average_precision": 0.8567630376429081,
+  "macro_balanced_accuracy": 0.857385563093268,
+  "macro_f1": 0.78967423980039,
+  "macro_precision": 0.8132605396360256,
+  "macro_recall": 0.7692758137640826,
+  "macro_roc_auc": 0.9252887280402946,
+  "mean_class_accuracy": 0.903910242168407,
+  "micro_f1": 0.7906076010651174,
+  "micro_precision": 0.8128422100547537,
+  "micro_recall": 0.7695570216776626,
+  "outer_examples": 1286,
+  "per_class": {
+    "Communication": {
+      "accuracy": 0.9105754276827371,
+      "average_precision": 0.8740969418700202,
+      "balanced_accuracy": 0.8722968212596266,
+      "f1": 0.8013816925734024,
+      "false_negative": 57,
+      "false_positive": 58,
+      "precision": 0.8,
+      "recall": 0.8027681660899654,
+      "roc_auc": 0.9287481822630521,
+      "specificity": 0.9418254764292878,
+      "support": 289,
+      "true_negative": 939,
+      "true_positive": 232
+    },
+    "Fighter": {
+      "accuracy": 0.9121306376360808,
+      "average_precision": 0.8716177753344059,
+      "balanced_accuracy": 0.8624789396093298,
+      "f1": 0.8087986463620981,
+      "false_negative": 73,
+      "false_positive": 40,
+      "precision": 0.8566308243727598,
+      "recall": 0.7660256410256411,
+      "roc_auc": 0.9351043805612594,
+      "specificity": 0.9589322381930184,
+      "support": 312,
+      "true_negative": 934,
+      "true_positive": 239
+    },
+    "Footsteps": {
+      "accuracy": 0.8849144634525661,
+      "average_precision": 0.8003666749295983,
+      "balanced_accuracy": 0.8232084524478251,
+      "f1": 0.7279411764705882,
+      "false_negative": 79,
+      "false_positive": 69,
+      "precision": 0.7415730337078652,
+      "recall": 0.7148014440433214,
+      "roc_auc": 0.8800113061865592,
+      "specificity": 0.931615460852329,
+      "support": 277,
+      "true_negative": 940,
+      "true_positive": 198
+    },
+    "Gunshot": {
+      "accuracy": 0.926905132192846,
+      "average_precision": 0.9126418894240915,
+      "balanced_accuracy": 0.8943187627811862,
+      "f1": 0.8517350157728707,
+      "false_negative": 56,
+      "false_positive": 38,
+      "precision": 0.8766233766233766,
+      "recall": 0.8282208588957055,
+      "roc_auc": 0.9562116564417178,
+      "specificity": 0.9604166666666667,
+      "support": 326,
+      "true_negative": 922,
+      "true_positive": 270
+    },
+    "Helicopter": {
+      "accuracy": 0.8732503888024883,
+      "average_precision": 0.8097146883803781,
+      "balanced_accuracy": 0.8096348789035022,
+      "f1": 0.7278797996661102,
+      "false_negative": 101,
+      "false_positive": 62,
+      "precision": 0.7785714285714286,
+      "recall": 0.6833855799373041,
+      "roc_auc": 0.9046253642944438,
+      "specificity": 0.9358841778697001,
+      "support": 319,
+      "true_negative": 905,
+      "true_positive": 218
+    },
+    "Shelling": {
+      "accuracy": 0.9261275272161742,
+      "average_precision": 0.8958276324685301,
+      "balanced_accuracy": 0.8770224428067712,
+      "f1": 0.8342059336823735,
+      "false_negative": 66,
+      "false_positive": 29,
+      "precision": 0.8917910447761194,
+      "recall": 0.7836065573770492,
+      "roc_auc": 0.943172741097241,
+      "specificity": 0.9704383282364933,
+      "support": 305,
+      "true_negative": 952,
+      "true_positive": 239
+    },
+    "Vehicle": {
+      "accuracy": 0.8934681181959565,
+      "average_precision": 0.833075661093332,
+      "balanced_accuracy": 0.8627386438446346,
+      "f1": 0.7757774140752864,
+      "false_negative": 57,
+      "false_positive": 80,
+      "precision": 0.7476340694006309,
+      "recall": 0.8061224489795918,
+      "roc_auc": 0.9291474654377879,
+      "specificity": 0.9193548387096774,
+      "support": 294,
+      "true_negative": 912,
+      "true_positive": 237
+    }
+  },
+  "samples_f1": 0.8113622898615122,
+  "samples_precision": 0.8553136340072577,
+  "samples_recall": 0.8201140487299118,
+  "stopping_epoch": 31,
+  "subset_accuracy": 0.5466562986003111,
+  "threshold_source": "inner_validation_only",
+  "thresholds": {
+    "Communication": 0.45,
+    "Fighter": 0.55,
+    "Footsteps": 0.4,
+    "Gunshot": 0.7500000000000001,
+    "Helicopter": 0.55,
+    "Shelling": 0.5,
+    "Vehicle": 0.45
+  }
+}

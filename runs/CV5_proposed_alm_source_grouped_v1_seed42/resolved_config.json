@@ -1,0 +1,85 @@
+{
+  "audibility": {
+    "center_db": -15.0,
+    "policy": "soft_audibility",
+    "soft_floor": 0.1,
+    "temperature_db": 6.0,
+    "threshold_db": -15.0
+  },
+  "dataset_version": "mad_source_grouped_cv5_v1",
+  "examples_per_fold": 6429,
+  "folds": 5,
+  "generation": {
+    "alpha_range": [
+      0.3,
+      0.7
+    ],
+    "clean_ratio": 0.5,
+    "dirichlet_concentration": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "three_class_ratio": 0.15,
+    "three_class_weight_floor": 0.2,
+    "two_class_ratio": 0.35
+  },
+  "loss": {
+    "asl_clip": 0.05,
+    "asl_gamma_neg": 4.0,
+    "asl_gamma_pos": 0.0,
+    "audibility_floor": 0.25,
+    "classification": "asl",
+    "confusion_source": "training_label_cooccurrence_v1",
+    "confusion_strength": 1.0,
+    "lambda_mask": 0.25,
+    "pos_weight_cap": 8.0
+  },
+  "model": {
+    "dropout": 0.1,
+    "embed_dim": 256,
+    "ff_dim": 1024,
+    "max_time_frames": 100,
+    "name": "ALMModel",
+    "num_heads": 8,
+    "num_layers": 6,
+    "use_asymmetric_loss": true,
+    "use_audibility_labels": true,
+    "use_audibility_loss": true,
+    "use_class_queries": true,
+    "use_confusion_weights": true,
+    "use_fusion": true,
+    "use_mask_supervision": true,
+    "use_operational_costs": false
+  },
+  "official_test": "excluded_from_cross_validation_and_reserved_for_one_final_evaluation",
+  "preprocessing": {
+    "duration_seconds": 10,
+    "f_max": 8000.0,
+    "f_min": 0.0,
+    "hop_length": 512,
+    "log_epsilon": 1e-06,
+    "n_fft": 1024,
+    "n_mels": 128,
+    "pad_mode": "reflect",
+    "sample_rate": 16000
+  },
+  "run_id": "CV5_proposed_alm_source_grouped_v1_seed42",
+  "seed": 42,
+  "source_config": "configs/data/mad_source_disjoint_v1.json",
+  "training": {
+    "amp": true,
+    "batch_size": 32,
+    "checkpoint_metric": "mAP",
+    "early_stopping_min_delta": 0.001,
+    "early_stopping_patience": 10,
+    "epochs": 60,
+    "eta_min": 0.0,
+    "grad_clip": 1.0,
+    "lr": 0.0003,
+    "num_workers": 0,
+    "scheduler": "cosine",
+    "threshold_strategy": "per_class_f1",
+    "weight_decay": 0.01
+  }
+}

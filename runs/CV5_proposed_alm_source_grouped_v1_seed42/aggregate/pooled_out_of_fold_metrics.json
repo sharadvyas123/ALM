@@ -1,0 +1,18 @@
+{
+  "exact_match": 0.5115085536547433,
+  "examples": 6430,
+  "hamming_loss": 0.10373250388802488,
+  "label_accuracy": 0.8962674961119751,
+  "label_ranking_average_precision": 0.8998930484583626,
+  "mAP": 0.8418400510809327,
+  "macro_balanced_accuracy": 0.8410042151162668,
+  "macro_f1": 0.7692155753050212,
+  "macro_precision": 0.8053673017689579,
+  "macro_recall": 0.7369350758831709,
+  "macro_roc_auc": 0.9165268997507738,
+  "mean_class_accuracy": 0.8962674961119751,
+  "micro_f1": 0.7703732848079476,
+  "micro_precision": 0.8055127018409955,
+  "micro_recall": 0.7381715362865221,
+  "samples_f1": 0.7942083240761312
+}

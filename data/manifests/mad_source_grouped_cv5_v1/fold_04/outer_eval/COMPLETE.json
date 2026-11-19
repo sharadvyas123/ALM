@@ -1,0 +1,10 @@
+{
+  "audio_files": 1286,
+  "audit_sha256": "1e910c72e8a3bff2e98727ffc45eaa0d3f181b3ad1a7c9708c2f6869dc6653b6",
+  "config_sha256": "88a64877bd930772a2e62b46d64811008bf55f62de0e5cf319286708feda17a9",
+  "metadata_sha256": "a259b45ce152423e99c2dff0b68a1f5327f08837e7977b67cd1b48f18bca4157",
+  "mixture_manifest_sha256": "938985b1f2a99cea1638a638f170e4ad676438baffbc46f4abaab6b4a859e01c",
+  "recipe_sha256": "b262975370faed9b0eb1d190e81373631e2967feccb4b9fbb2f2201d76dbb765",
+  "source_manifest_sha256": "735ee4092138e37cb0391fe97ac9705620fd7c3b6792e58d1653943328e12ef5",
+  "status": "complete"
+}

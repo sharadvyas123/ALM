@@ -1,0 +1,78 @@
+{
+  "run_id": "CV5_proposed_alm_source_grouped_v1_seed42",
+  "dataset_version": "mad_source_grouped_cv5_v1",
+  "seed": 42,
+  "folds": 5,
+  "examples_per_fold": 6429,
+  "source_config": "configs/data/mad_source_disjoint_v1.json",
+  "model": {
+    "name": "ALMModel",
+    "embed_dim": 256,
+    "num_heads": 8,
+    "num_layers": 6,
+    "ff_dim": 1024,
+    "dropout": 0.1,
+    "max_time_frames": 100,
+    "use_fusion": true,
+    "use_class_queries": true,
+    "use_mask_supervision": true,
+    "use_audibility_labels": true,
+    "use_audibility_loss": true,
+    "use_asymmetric_loss": true,
+    "use_confusion_weights": true,
+    "use_operational_costs": false
+  },
+  "preprocessing": {
+    "sample_rate": 16000,
+    "duration_seconds": 10,
+    "n_fft": 1024,
+    "hop_length": 512,
+    "n_mels": 128,
+    "f_min": 0.0,
+    "f_max": 8000.0,
+    "log_epsilon": 1e-6,
+    "pad_mode": "reflect"
+  },
+  "audibility": {
+    "policy": "soft_audibility",
+    "threshold_db": -15.0,
+    "center_db": -15.0,
+    "temperature_db": 6.0,
+    "soft_floor": 0.1
+  },
+  "loss": {
+    "classification": "asl",
+    "pos_weight_cap": 8.0,
+    "lambda_mask": 0.25,
+    "confusion_strength": 1.0,
+    "confusion_source": "training_label_cooccurrence_v1",
+    "asl_gamma_pos": 0.0,
+    "asl_gamma_neg": 4.0,
+    "asl_clip": 0.05,
+    "audibility_floor": 0.25
+  },
+  "training": {
+    "batch_size": 32,
+    "epochs": 60,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "amp": true,
+    "num_workers": 0,
+    "scheduler": "cosine",
+    "eta_min": 0.0,
+    "checkpoint_metric": "mAP",
+    "early_stopping_patience": 10,
+    "early_stopping_min_delta": 0.001,
+    "threshold_strategy": "per_class_f1"
+  },
+  "generation": {
+    "clean_ratio": 0.5,
+    "two_class_ratio": 0.35,
+    "three_class_ratio": 0.15,
+    "alpha_range": [0.3, 0.7],
+    "dirichlet_concentration": [1.0, 1.0, 1.0],
+    "three_class_weight_floor": 0.2
+  },
+  "official_test": "excluded_from_cross_validation_and_reserved_for_one_final_evaluation"
+}

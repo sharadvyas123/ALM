@@ -1,0 +1,21 @@
+{
+  "cuda_available": true,
+  "cuda_version": "13.2",
+  "git_commit": "d1df64931b0d393b172120e52f0e1afe9ef9b66d",
+  "git_status": "M .gitignore\n M configs/experiments/README.md\n M src/alm/training/engine.py\n M src/alm/training/metrics.py\n?? configs/experiments/CV5_proposed_alm_source_grouped_v1.json\n?? data/manifests/mad_source_grouped_cv5_v1/\n?? data/synthetic/mad_source_grouped_cv5_v1/\n?? get_classwise_acc.py\n?? research/experiments/\n?? runs/CV5_proposed_alm_source_grouped_v1_seed42/\n?? runs/FULL_proposed_alm_seed42/post_training_evaluation/\n?? scripts/evaluate_cv5.py\n?? scripts/prepare_cv5.py\n?? scripts/train_cv5.py\n?? src/alm/data/cv_auditing.py\n?? src/alm/data/cv_mixing.py\n?? src/alm/data/cv_splitting.py\n?? src/alm/evaluation/",
+  "gpu": "NVIDIA GeForce RTX 2050",
+  "packages": {
+    "matplotlib": "3.10.8",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "soundfile": "0.13.1",
+    "torch": "2.14.1+cu132",
+    "torchaudio": "2.11.1+cu132",
+    "tqdm": "4.67.3"
+  },
+  "pid": 215664,
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "torch": "2.14.1+cu132"
+}

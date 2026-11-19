@@ -1,0 +1,24 @@
+{
+  "aggregate_artifact_sha256": {
+    "COMPLETE.json": "de7daea8c81134df1a33625723b525634c0c09019ff30044f53332f7b3440cf0",
+    "class_f1_by_fold.png": "cc70259a56e8360681e3a74c4ed15651fc2a00a73092337a164412ceeb847a59",
+    "fold_comparison.png": "796a358d16c69e04d018b39fb65ea8f8235a0297226b378eec96bb5c606c7fc7",
+    "metrics_by_fold.csv": "5fd4f300b7ad80e499049ce1c0524a9ef245b2387f2f225634023c58aecaf096",
+    "pooled_out_of_fold_metrics.json": "e81443f30255fe54b2706d976057f358a55c0d597b3aa10e6feeec6f76d8db6f",
+    "pooled_out_of_fold_predictions.npz": "4a501d81d90e3c78edc5f21f00345e4b2fec441ef4e65bb5cc8b9e412ef80125",
+    "pooled_precision_recall.png": "62d80796b7cf2d2937c9acf8293587fe02b787af18485575687fcb0b007f0c5b",
+    "summary.json": "22231e46a078fe26b62c6a8403f66cac83887d2367054633ef074f33adcc914f"
+  },
+  "completed_folds": [
+    "fold_01",
+    "fold_02",
+    "fold_03",
+    "fold_04",
+    "fold_05"
+  ],
+  "event_log_sha256": "be77d66e82fea1ec2adc0ca874326a1bcdd3a543270081be2bad83243aae5a2d",
+  "expected_folds": 5,
+  "last_started_utc": "2026-11-19T14:42:41Z",
+  "started_utc": "2026-11-19T14:42:41Z",
+  "status": "complete"
+}

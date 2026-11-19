@@ -1,0 +1,28 @@
+{
+  "class_order": [
+    "Communication",
+    "Gunshot",
+    "Footsteps",
+    "Shelling",
+    "Vehicle",
+    "Helicopter",
+    "Fighter"
+  ],
+  "counts_by_split": {
+    "train": {
+      "2-class": 1,
+      "3-class": 1,
+      "clean": 1
+    },
+    "val": {
+      "2-class": 450,
+      "3-class": 193,
+      "clean": 643
+    }
+  },
+  "dataset_version": "mad_source_grouped_cv5_v1",
+  "duration_seconds": 10,
+  "sample_rate": 16000,
+  "seed": 1045,
+  "split_role": "outer_eval"
+}

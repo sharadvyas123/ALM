@@ -1,0 +1,533 @@
+{
+  "completed_utc": "2026-11-19T14:37:55.806826+00:00",
+  "config_sha256": "3ba2caf5d9f7d6eb685c99fc82904e73b460aa3606a3d29be283ca974e06f547",
+  "folds": {
+    "fold_01": {
+      "inner_dataset": {
+        "audio_files": 5143,
+        "audit_sha256": "35bef51da6caba65fba29cf7af632eb0199ff4e75b6ba75a6cfe5f0c9401eccb",
+        "config_sha256": "73d2b3553b6f830ba150cd926d2c31264888dc8f09084a6b431456ad24ec3994",
+        "metadata_sha256": "27613829ec6cc516720867791caa55fa5926ce5d6cd4f4750e603cd100ab4249",
+        "mixture_manifest_sha256": "640948d8f990a7d51df49c5bc32fe248bef2797e1f922335663ccd496030151c",
+        "recipe_sha256": "56ba382caebb80aaadde45afc3f879c065041e8b6005617c124a29f6189cbb9e",
+        "source_manifest_sha256": "64b8dd799bb21525f66cb611e861d06cf5a49b7fd81863eb2e08c079d50ec583",
+        "status": "complete"
+      },
+      "inner_group_assignment": {
+        "algorithm": "seeded_group_class_balance_candidates_v1",
+        "assignment_sha256": "0f53230067b97dc6caaee9cc57d523aaae92566a24e6cfb68f599b34d1554606",
+        "candidate_count": 4096,
+        "folds": {
+          "1": {
+            "class_source_counts": {
+              "Communication": 142,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 232,
+              "Helicopter": 167,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 87,
+            "sources": 1204
+          },
+          "2": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 171,
+              "Footsteps": 149,
+              "Gunshot": 230,
+              "Helicopter": 168,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 87,
+            "sources": 1205
+          },
+          "3": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 168,
+              "Shelling": 168,
+              "Vehicle": 177
+            },
+            "groups": 89,
+            "sources": 1206
+          },
+          "4": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 167,
+              "Shelling": 169,
+              "Vehicle": 176
+            },
+            "groups": 88,
+            "sources": 1205
+          }
+        },
+        "n_splits": 4,
+        "objective": "mean class source share deviation squared + fold source share deviation squared",
+        "objective_value": 4.3768616949448637e-07,
+        "seed": 43,
+        "selected_candidate_zero_based": 0
+      },
+      "inner_validation_fold": 1,
+      "outer_eval_dataset": {
+        "audio_files": 1286,
+        "audit_sha256": "393c7a155a2830ea8f78a0430a0faddca7cd864ad399ee44067f7e6d55cdce40",
+        "config_sha256": "6ceb2d6a1a8d3e1a7bee31880107b5d1cce7f0ea9d28d456e9c50258e3c5a5fa",
+        "metadata_sha256": "4123b669c8d377d1dfec55575679109ad0d03e48bb0f14496c1948ec2fa60423",
+        "mixture_manifest_sha256": "21a52ecec5db83295cf2e843c243c2a36ad97192fd031cb267902305ad343400",
+        "recipe_sha256": "cf3c0446219076709571d544f6d06530c0822d73e4b0b6317b76b835a142bb95",
+        "source_manifest_sha256": "ef9d0e1112bbb2a3a88572c3b9b45082d4f5117f6e9b5f6e5be5eef767d73b42",
+        "status": "complete"
+      }
+    },
+    "fold_02": {
+      "inner_dataset": {
+        "audio_files": 5143,
+        "audit_sha256": "ced8dc0ae6f137fe2e047345d8d53cb75b2f7aae275f4a30396f451e975b8fb9",
+        "config_sha256": "cd5551d70903ab4c608d5dc0bc4e4d71758a82f2c071c8b1d1a815fe80ba80c0",
+        "metadata_sha256": "7947dc25474edf8dc9e2f22676319fc175e37728dfe9f6eb9fc471f565a87baf",
+        "mixture_manifest_sha256": "349e57527468019839e1ae586568901519cb3199ba8f821c91f14841255f2810",
+        "recipe_sha256": "ac5bf203d6e9c7bf16eabd6138f75db5259cea25df7bdc2cd259a2c88062d391",
+        "source_manifest_sha256": "dbfe3045cf06b9c48543f39cc02db07ecd0ca6403e8593554b83cb1ea0ac0e7e",
+        "status": "complete"
+      },
+      "inner_group_assignment": {
+        "algorithm": "seeded_group_class_balance_candidates_v1",
+        "assignment_sha256": "5eff07b8be8a1196baa43d545028740a1650dbd8c02d741855cb54fa85edf984",
+        "candidate_count": 4096,
+        "folds": {
+          "1": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 168,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 88,
+            "sources": 1205
+          },
+          "2": {
+            "class_source_counts": {
+              "Communication": 142,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 232,
+              "Helicopter": 167,
+              "Shelling": 169,
+              "Vehicle": 176
+            },
+            "groups": 88,
+            "sources": 1205
+          },
+          "3": {
+            "class_source_counts": {
+              "Communication": 142,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 167,
+              "Shelling": 168,
+              "Vehicle": 178
+            },
+            "groups": 87,
+            "sources": 1205
+          },
+          "4": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 167,
+              "Shelling": 169,
+              "Vehicle": 176
+            },
+            "groups": 87,
+            "sources": 1205
+          }
+        },
+        "n_splits": 4,
+        "objective": "mean class source share deviation squared + fold source share deviation squared",
+        "objective_value": 4.946536926193784e-07,
+        "seed": 44,
+        "selected_candidate_zero_based": 23
+      },
+      "inner_validation_fold": 2,
+      "outer_eval_dataset": {
+        "audio_files": 1286,
+        "audit_sha256": "87c9f29ebcab72c551b9e981da3b72e0a57c5a2f5e39d794faf29061ba136eab",
+        "config_sha256": "20d2e872a93fbe80ef206b4967acdf7d350ce3f0413bcb5d36e32d44340a2145",
+        "metadata_sha256": "f9a8732e7ef426fd101104460521a7e87a4468b3c4e9f70c8340976f5a2e0223",
+        "mixture_manifest_sha256": "b56cc38e322362ff94715411fc4d79dc220d46e04c05af383257de18ac6d5520",
+        "recipe_sha256": "f4d41db1264b662093034ef4875286f64ccaf212ca34047d54de2c117448c46f",
+        "source_manifest_sha256": "46161de21964193b57523ffcd943f87f1f449f0d3f5e3e4f7de554006926d7d1",
+        "status": "complete"
+      }
+    },
+    "fold_03": {
+      "inner_dataset": {
+        "audio_files": 5143,
+        "audit_sha256": "da968c317a1fedb02985231f8d20393af37cf456f089d51c72fb5afce0121fe5",
+        "config_sha256": "8d2f626174ec4df9e2b079fc9891e2874024821ab79d319163423924e5f18b8e",
+        "metadata_sha256": "7e7a4085d6b32aed6217d6f63191193500fc070431f6c5e94e7eeeffb14db67f",
+        "mixture_manifest_sha256": "2841d02b9d2b73e9003443c97dd1885d8fbc222ae693029b39ee8a40eb70bae8",
+        "recipe_sha256": "8123d47ac68c2207bed5ad95d344164813b4e05e533e705b431ee7339ea51062",
+        "source_manifest_sha256": "bca766b210efde48fe84960338bee1ddbcb4603a0bdc22f092c5c7b25387fefe",
+        "status": "complete"
+      },
+      "inner_group_assignment": {
+        "algorithm": "seeded_group_class_balance_candidates_v1",
+        "assignment_sha256": "f3e38f15219a2e3bf8ba61fe4a488e7fe13b3e6774ebcaec88751fd522fadc18",
+        "candidate_count": 4096,
+        "folds": {
+          "1": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 167,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 88,
+            "sources": 1204
+          },
+          "2": {
+            "class_source_counts": {
+              "Communication": 142,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 232,
+              "Helicopter": 167,
+              "Shelling": 169,
+              "Vehicle": 177
+            },
+            "groups": 87,
+            "sources": 1206
+          },
+          "3": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 171,
+              "Footsteps": 149,
+              "Gunshot": 230,
+              "Helicopter": 167,
+              "Shelling": 169,
+              "Vehicle": 176
+            },
+            "groups": 88,
+            "sources": 1205
+          },
+          "4": {
+            "class_source_counts": {
+              "Communication": 142,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 232,
+              "Helicopter": 167,
+              "Shelling": 168,
+              "Vehicle": 177
+            },
+            "groups": 87,
+            "sources": 1205
+          }
+        },
+        "n_splits": 4,
+        "objective": "mean class source share deviation squared + fold source share deviation squared",
+        "objective_value": 4.542605189926736e-07,
+        "seed": 45,
+        "selected_candidate_zero_based": 6
+      },
+      "inner_validation_fold": 3,
+      "outer_eval_dataset": {
+        "audio_files": 1286,
+        "audit_sha256": "3743efd255639dbaff6a19958975a9d105e2e966fd5973ed564eb7cb6beb8a96",
+        "config_sha256": "c97355a0280f948922c29c3b6659bbe3481a1793e1964cf6b61b3aa82ae349af",
+        "metadata_sha256": "4ebaaa077efcf7cb6f29f88ec93eddd6f1985cbbe9900346aa441f248f7c732e",
+        "mixture_manifest_sha256": "373a044164232ee7da1f350cc0714e9ba25f7cd5ad9dc9481bd03900f039825a",
+        "recipe_sha256": "854bf6c00fe09ac486981d4abe3a7f79a033ce254de791efc4e92239009ddce1",
+        "source_manifest_sha256": "226af726f8fc152454ecc49d103860bbb792541047505e1c431e325299439f62",
+        "status": "complete"
+      }
+    },
+    "fold_04": {
+      "inner_dataset": {
+        "audio_files": 5143,
+        "audit_sha256": "88ba869144d7c9bd9ffa6d24e05b13f1a583890e8a8a93678c41e004cc9109a6",
+        "config_sha256": "3e98719c837d5b9f77d562de5b3681b1ea4a82ca73e385b94f0bfa93e8f09c10",
+        "metadata_sha256": "beb6505ecae9a484efcafdc3c6f1de5072901c165b28e3cd4ef49e5515550c79",
+        "mixture_manifest_sha256": "8384bf7efe892dc1d3eb118232a527e2294602eb83b06d36fb8a8b466c7c9028",
+        "recipe_sha256": "b6a735a3a78dbd0ab366cd4f9565cd66bc1de84099b3435d4e651f0c2039c477",
+        "source_manifest_sha256": "4754e96ebacff3568157b876721337435a29aabb9ded1705fd48cb3993380342",
+        "status": "complete"
+      },
+      "inner_group_assignment": {
+        "algorithm": "seeded_group_class_balance_candidates_v1",
+        "assignment_sha256": "fa9af70a97a5ef34ec6466c1c277e6481c2956c89cc28577e776d6a60976b4b8",
+        "candidate_count": 4096,
+        "folds": {
+          "1": {
+            "class_source_counts": {
+              "Communication": 142,
+              "Fighter": 171,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 167,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 86,
+            "sources": 1204
+          },
+          "2": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 167,
+              "Shelling": 169,
+              "Vehicle": 176
+            },
+            "groups": 87,
+            "sources": 1205
+          },
+          "3": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 230,
+              "Helicopter": 167,
+              "Shelling": 169,
+              "Vehicle": 178
+            },
+            "groups": 89,
+            "sources": 1206
+          },
+          "4": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 232,
+              "Helicopter": 167,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 88,
+            "sources": 1205
+          }
+        },
+        "n_splits": 4,
+        "objective": "mean class source share deviation squared + fold source share deviation squared",
+        "objective_value": 5.386717801797578e-07,
+        "seed": 46,
+        "selected_candidate_zero_based": 0
+      },
+      "inner_validation_fold": 4,
+      "outer_eval_dataset": {
+        "audio_files": 1286,
+        "audit_sha256": "1e910c72e8a3bff2e98727ffc45eaa0d3f181b3ad1a7c9708c2f6869dc6653b6",
+        "config_sha256": "88a64877bd930772a2e62b46d64811008bf55f62de0e5cf319286708feda17a9",
+        "metadata_sha256": "a259b45ce152423e99c2dff0b68a1f5327f08837e7977b67cd1b48f18bca4157",
+        "mixture_manifest_sha256": "938985b1f2a99cea1638a638f170e4ad676438baffbc46f4abaab6b4a859e01c",
+        "recipe_sha256": "b262975370faed9b0eb1d190e81373631e2967feccb4b9fbb2f2201d76dbb765",
+        "source_manifest_sha256": "735ee4092138e37cb0391fe97ac9705620fd7c3b6792e58d1653943328e12ef5",
+        "status": "complete"
+      }
+    },
+    "fold_05": {
+      "inner_dataset": {
+        "audio_files": 5143,
+        "audit_sha256": "7be12a1c1db6a7a504cec61beae1569fb9540ae316b6c43ac4d88a2dd2651bed",
+        "config_sha256": "a2084c1ddad70ba4f2b2d5f366957650f1fee176555b9f05beaade12ff055db9",
+        "metadata_sha256": "c603b1613c6904dfc4a626a1abd52b23007eb727335cf5a96554575a5c12eb0a",
+        "mixture_manifest_sha256": "3f2fb0300150cca438f5ece95be358ac637bc9b064d7a2985f1c3c9b7bf52a82",
+        "recipe_sha256": "d0c6d5c132c4920a1ca90ee868ed2e8a93cd908d970deedc70813a92f2decb9e",
+        "source_manifest_sha256": "25ae570cf8f835328f687070cdca4473ac99025cfa9be481992e1bcf6209faaa",
+        "status": "complete"
+      },
+      "inner_group_assignment": {
+        "algorithm": "seeded_group_class_balance_candidates_v1",
+        "assignment_sha256": "70434335a9b2334649d0e1711bf007c5d0e5e26d2d7cfdfa6c7a43476b423d43",
+        "candidate_count": 4096,
+        "folds": {
+          "1": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 167,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 87,
+            "sources": 1204
+          },
+          "2": {
+            "class_source_counts": {
+              "Communication": 143,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 231,
+              "Helicopter": 168,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 88,
+            "sources": 1205
+          },
+          "3": {
+            "class_source_counts": {
+              "Communication": 142,
+              "Fighter": 170,
+              "Footsteps": 149,
+              "Gunshot": 232,
+              "Helicopter": 167,
+              "Shelling": 169,
+              "Vehicle": 177
+            },
+            "groups": 88,
+            "sources": 1206
+          },
+          "4": {
+            "class_source_counts": {
+              "Communication": 142,
+              "Fighter": 171,
+              "Footsteps": 149,
+              "Gunshot": 232,
+              "Helicopter": 167,
+              "Shelling": 168,
+              "Vehicle": 176
+            },
+            "groups": 88,
+            "sources": 1205
+          }
+        },
+        "n_splits": 4,
+        "objective": "mean class source share deviation squared + fold source share deviation squared",
+        "objective_value": 4.0373281611378906e-07,
+        "seed": 47,
+        "selected_candidate_zero_based": 0
+      },
+      "inner_validation_fold": 1,
+      "outer_eval_dataset": {
+        "audio_files": 1286,
+        "audit_sha256": "dc5b9d99a49b256278ee0b6161b94716948304d61edb94bf9677e41f3f4df544",
+        "config_sha256": "52bb10d198d73e7e0757d1973b94b342bce4839fd6654b7887cd41fd85b5b5a0",
+        "metadata_sha256": "fe5d369e0ea335dd6e5360c8f0be796647d67ff5d5f9955d7e1d4ea491d6f8b6",
+        "mixture_manifest_sha256": "b173a97a86cf6e79365c60ddbae4eb525a0915103b9503459c2207196f7cb019",
+        "recipe_sha256": "9cc7a73b40a7b400c5aeb400a79716f11a9e89b19a3d70a785a68db03c6c889d",
+        "source_manifest_sha256": "8e39d83a60144d89a9eba41b27019b3d5f74ef51ba8b414e05ddd75f8a8bd4e9",
+        "status": "complete"
+      }
+    }
+  },
+  "git_commit": "d1df64931b0d393b172120e52f0e1afe9ef9b66d",
+  "outer_assignment": {
+    "algorithm": "seeded_group_class_balance_candidates_v1",
+    "assignment_sha256": "555511ceff33408d70b7a54ad216ee90e802b73ee1e345cb8afb475e244849e1",
+    "candidate_count": 4096,
+    "folds": {
+      "1": {
+        "class_source_counts": {
+          "Communication": 142,
+          "Fighter": 170,
+          "Footsteps": 149,
+          "Gunshot": 232,
+          "Helicopter": 166,
+          "Shelling": 169,
+          "Vehicle": 177
+        },
+        "groups": 87,
+        "sources": 1205
+      },
+      "2": {
+        "class_source_counts": {
+          "Communication": 143,
+          "Fighter": 171,
+          "Footsteps": 149,
+          "Gunshot": 231,
+          "Helicopter": 167,
+          "Shelling": 168,
+          "Vehicle": 176
+        },
+        "groups": 88,
+        "sources": 1205
+      },
+      "3": {
+        "class_source_counts": {
+          "Communication": 143,
+          "Fighter": 170,
+          "Footsteps": 149,
+          "Gunshot": 231,
+          "Helicopter": 168,
+          "Shelling": 168,
+          "Vehicle": 176
+        },
+        "groups": 88,
+        "sources": 1205
+      },
+      "4": {
+        "class_source_counts": {
+          "Communication": 142,
+          "Fighter": 170,
+          "Footsteps": 149,
+          "Gunshot": 232,
+          "Helicopter": 168,
+          "Shelling": 168,
+          "Vehicle": 176
+        },
+        "groups": 88,
+        "sources": 1205
+      },
+      "5": {
+        "class_source_counts": {
+          "Communication": 143,
+          "Fighter": 170,
+          "Footsteps": 149,
+          "Gunshot": 230,
+          "Helicopter": 167,
+          "Shelling": 169,
+          "Vehicle": 177
+        },
+        "groups": 87,
+        "sources": 1205
+      }
+    },
+    "n_splits": 5,
+    "objective": "mean class source share deviation squared + fold source share deviation squared",
+    "objective_value": 3.657695296973542e-07,
+    "seed": 42,
+    "selected_candidate_zero_based": 9
+  },
+  "protocol_code_sha256": {
+    "scripts/prepare_cv5.py": "14e2ee16f8d47dbf8e8b5eef80e3ca0dc72af9dc86bce74c249f15a0f9e3bccd",
+    "src/alm/data/auditing.py": "28cbde93fd639129121401fdae14ce0f004077dc19c1181084d5d7f1f94ef986",
+    "src/alm/data/cv_auditing.py": "2c479f67b31e913b134e6630a6ea6b4a9d12e704327252c1193cadc1ee64fe37",
+    "src/alm/data/cv_mixing.py": "873ba4bc1eac81fc01665e34ace7464c70f85b0759062d10009b2cb8bf8a8db8",
+    "src/alm/data/cv_splitting.py": "4514ec964f50de77b95a0093bb95b050bb29ae424281cc32fff45611bf2f3f45",
+    "src/alm/data/generation.py": "b871411daedeb0c59cbd26315c9fc16651571bdb9e5d4eca92ba16e370aafc27",
+    "src/alm/data/mixing.py": "dcf18f0067615d1d0c6aaf4a873513848257866a3366065a17bc0e1688544694",
+    "src/alm/data/provenance.py": "6c51aee8f0e231b16bf01e137530e7b319dfa3439423c458ce74113c0643a4e7"
+  },
+  "python": "3.12.3",
+  "source_certificate_sha256": "6dd6c70ba738df3bd39a2b9ddcfe8d4a04708efdeed3fc72bb78f0fd2cbf152f",
+  "source_metadata_sha256": "38c41f26e46dfa832bcb35d2bb58bd1a3728ecf7795fba705d98ae8625ec4e22",
+  "status": "complete"
+}

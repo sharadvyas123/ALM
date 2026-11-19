@@ -1,0 +1,12 @@
+{"device": "auto", "event": "run_started", "resume": false, "time_utc": "2026-11-19T14:42:41Z"}
+{"event": "fold_started", "fold": 1, "time_utc": "2026-11-19T14:42:42Z"}
+{"event": "fold_completed", "fold": 1, "outer_mAP": 0.8567630376429081, "time_utc": "2026-11-19T15:17:14Z"}
+{"event": "fold_started", "fold": 2, "time_utc": "2026-11-19T15:17:14Z"}
+{"event": "fold_completed", "fold": 2, "outer_mAP": 0.8383143292431916, "time_utc": "2026-11-19T15:45:14Z"}
+{"event": "fold_started", "fold": 3, "time_utc": "2026-11-19T15:45:14Z"}
+{"event": "fold_completed", "fold": 3, "outer_mAP": 0.8359521718294844, "time_utc": "2026-11-19T16:13:50Z"}
+{"event": "fold_started", "fold": 4, "time_utc": "2026-11-19T16:13:50Z"}
+{"event": "fold_completed", "fold": 4, "outer_mAP": 0.8497233661342872, "time_utc": "2026-11-19T16:50:49Z"}
+{"event": "fold_started", "fold": 5, "time_utc": "2026-11-19T16:50:49Z"}
+{"event": "fold_completed", "fold": 5, "outer_mAP": 0.8507167261364723, "time_utc": "2026-11-19T17:20:13Z"}
+{"completed_folds": ["fold_01", "fold_02", "fold_03", "fold_04", "fold_05"], "event": "run_completed", "time_utc": "2026-11-19T17:20:14Z"}

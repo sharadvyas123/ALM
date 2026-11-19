@@ -15,3 +15,7 @@ runs/_backup*/
 research/audibility/**/*.csv
 runs/**/metrics.csv
 runs/**/audibility_cache/
+
+# Generated fold audio and per-example training caches (keep manifests/audits).
+/data/synthetic/**/audio/
+/runs/**/cache/

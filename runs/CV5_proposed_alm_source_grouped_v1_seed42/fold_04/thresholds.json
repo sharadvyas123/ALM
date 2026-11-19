@@ -1,0 +1,44 @@
+{
+  "objective": 0.7709634432690077,
+  "objective_name": "validation_macro_f1",
+  "per_class": {
+    "Communication": {
+      "f1": 0.786046511627907,
+      "threshold": 0.45
+    },
+    "Fighter": {
+      "f1": 0.8043010752688172,
+      "threshold": 0.6500000000000001
+    },
+    "Footsteps": {
+      "f1": 0.6697674418604651,
+      "threshold": 0.4
+    },
+    "Gunshot": {
+      "f1": 0.8641509433962264,
+      "threshold": 0.7000000000000001
+    },
+    "Helicopter": {
+      "f1": 0.7589285714285714,
+      "threshold": 0.6500000000000001
+    },
+    "Shelling": {
+      "f1": 0.7937219730941704,
+      "threshold": 0.5
+    },
+    "Vehicle": {
+      "f1": 0.7198275862068966,
+      "threshold": 0.6000000000000001
+    }
+  },
+  "strategy": "per_class_f1",
+  "thresholds": {
+    "Communication": 0.45,
+    "Fighter": 0.6500000000000001,
+    "Footsteps": 0.4,
+    "Gunshot": 0.7000000000000001,
+    "Helicopter": 0.6500000000000001,
+    "Shelling": 0.5,
+    "Vehicle": 0.6000000000000001
+  }
+}

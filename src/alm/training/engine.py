@@ -6,6 +6,7 @@ import json
 import logging
 import math
 import os
+import random
 import time
 from pathlib import Path
 
@@ -42,13 +43,24 @@ class Trainer:
 
     def __init__(self, model: nn.Module, loss_fn: nn.Module, optimizer: torch.optim.Optimizer,
                  *, device: torch.device, run_dir: Path, scheduler=None, epochs: int = 1,
-                 grad_clip: float | None = 1.0, amp: bool = True, checkpoint_metric: str = "mAP") -> None:
+                 grad_clip: float | None = 1.0, amp: bool = True, checkpoint_metric: str = "mAP",
+                 early_stopping_patience: int | None = None, early_stopping_min_delta: float = 0.0,
+                 resume: bool = False, run_fingerprint: str | None = None) -> None:
         if epochs <= 0 or grad_clip is not None and grad_clip <= 0:
             raise ValueError("invalid trainer settings")
         self.model, self.loss_fn, self.optimizer = model.to(device), loss_fn.to(device), optimizer
         self.device, self.run_dir, self.scheduler = device, Path(run_dir), scheduler
         self.epochs, self.grad_clip, self.amp = epochs, grad_clip, bool(amp and device.type == "cuda")
         self.checkpoint_metric = checkpoint_metric
+        if early_stopping_patience is not None and early_stopping_patience < 1:
+            raise ValueError("early_stopping_patience must be positive or None")
+        if early_stopping_min_delta < 0:
+            raise ValueError("early_stopping_min_delta must be nonnegative")
+        self.early_stopping_patience = early_stopping_patience
+        self.early_stopping_min_delta = float(early_stopping_min_delta)
+        self.resume = bool(resume)
+        self.run_fingerprint = run_fingerprint
+        self.patience_count = 0
         self.scaler = torch.amp.GradScaler("cuda", enabled=self.amp)
         self.logger = self._logger()
         self.history: list[dict] = []
@@ -163,12 +175,84 @@ class Trainer:
             "run_id": self.run_dir.name, "status": status,
             "completed_epochs": len(self.history), "best_epoch": self.best_epoch,
             "best_value": self.best_value if math.isfinite(self.best_value) else None,
+            "patience_count": self.patience_count,
             "epochs": self.history,
         })
 
+    @staticmethod
+    def _rng_state(loader: DataLoader) -> dict:
+        generator = getattr(loader, "generator", None)
+        return {
+            "python": random.getstate(), "numpy": np.random.get_state(),
+            "torch": torch.get_rng_state(),
+            "cuda": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None,
+            "loader_generator": generator.get_state() if generator is not None else None,
+        }
+
+    @staticmethod
+    def _restore_rng(state: dict, loader: DataLoader) -> None:
+        random.setstate(state["python"])
+        np.random.set_state(state["numpy"])
+        torch.set_rng_state(state["torch"])
+        if torch.cuda.is_available() and state.get("cuda") is not None:
+            torch.cuda.set_rng_state_all(state["cuda"])
+        generator = getattr(loader, "generator", None)
+        if generator is not None and state.get("loader_generator") is not None:
+            generator.set_state(state["loader_generator"])
+
+    def _write_metrics_csv(self) -> None:
+        """Rebuild this run's derived CSV from its checkpointed epoch history."""
+        if not self.history:
+            return
+        path = self.run_dir / "metrics.csv"
+        temporary = path.with_name(path.name + ".tmp")
+        with temporary.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(self.history[0]))
+            writer.writeheader()
+            writer.writerows(self.history)
+            handle.flush()
+            os.fsync(handle.fileno())
+        temporary.replace(path)
+
     def fit(self, train_loader: DataLoader, val_loader: DataLoader) -> dict:
-        if any((self.run_dir / name).exists() for name in ("best_model.pt", "last_model.pt", "history.json", "metrics.csv")):
-            raise FileExistsError(f"Refusing to overwrite a previous run in {self.run_dir}; choose a new run_id")
+        last_path = self.run_dir / "last_model.pt"
+        existing = any((self.run_dir / name).exists() for name in ("best_model.pt", "last_model.pt", "history.json", "metrics.csv"))
+        if existing and not self.resume:
+            raise FileExistsError(f"Refusing to overwrite a previous run in {self.run_dir}; use resume or choose a new run_id")
+        start_epoch = 1
+        if self.resume and last_path.exists():
+            checkpoint = torch.load(last_path, map_location=self.device, weights_only=False)
+            if self.run_fingerprint is not None and checkpoint.get("run_fingerprint") != self.run_fingerprint:
+                raise ValueError("Resume refused: run config or fold manifest fingerprint changed")
+            self.model.load_state_dict(checkpoint["model_state"])
+            self.optimizer.load_state_dict(checkpoint["optimizer_state"])
+            if self.scheduler is not None and checkpoint.get("scheduler_state") is not None:
+                self.scheduler.load_state_dict(checkpoint["scheduler_state"])
+            if checkpoint.get("scaler_state"):
+                self.scaler.load_state_dict(checkpoint["scaler_state"])
+            self.history = checkpoint["history"]
+            self.best_epoch = int(checkpoint["best_epoch"])
+            self.best_value = float(checkpoint["best_value"])
+            self.patience_count = int(checkpoint.get("patience_count", 0))
+            best_path = self.run_dir / "best_model.pt"
+            if self.best_epoch == int(checkpoint["epoch"]):
+                best_is_current = False
+                if best_path.is_file():
+                    saved_best = torch.load(best_path, map_location="cpu", weights_only=False)
+                    best_is_current = int(saved_best.get("epoch", -1)) == self.best_epoch
+                if not best_is_current:
+                    _save_checkpoint(best_path, checkpoint)
+            self._restore_rng(checkpoint["rng_state"], train_loader)
+            start_epoch = int(checkpoint["epoch"]) + 1
+            self._write_metrics_csv()
+            self.logger.info("Resuming from completed epoch %d | best epoch=%d | best val_%s=%.6f",
+                             start_epoch - 1, self.best_epoch, self.checkpoint_metric, self.best_value)
+            if (self.early_stopping_patience is not None
+                    and self.patience_count >= self.early_stopping_patience):
+                self.logger.info("Early-stopping patience was already exhausted in the saved checkpoint")
+                start_epoch = self.epochs + 1
+        elif existing:
+            raise ValueError("Resume requested but no complete epoch checkpoint exists")
         self.logger.info("Experiment startup | run_id=%s | dir=%s", self.run_dir.name, self.run_dir)
         self.logger.info("DataLoaders | train_batches=%d val_batches=%d | amp=%s | progress=%s",
                          len(train_loader), len(val_loader), self.amp, tqdm.__name__)
@@ -184,7 +268,7 @@ class Trainer:
                     prepare(description=f"Preparing {split} audibility/mask targets")
             phase = "training"
             self.logger.info("TRAINING START | epochs=%d | device=%s", self.epochs, self.device)
-            for epoch in range(1, self.epochs + 1):
+            for epoch in range(start_epoch, self.epochs + 1):
                 started = time.time()
                 self.logger.debug("Epoch %d/%d start", epoch, self.epochs)
                 train = self._run_epoch(train_loader, train=True, epoch=epoch)
@@ -200,16 +284,25 @@ class Trainer:
                 if not math.isfinite(metric):
                     raise FloatingPointError("Validation checkpoint metric is not finite")
                 improved = metric > self.best_value
+                significant_improvement = metric > self.best_value + self.early_stopping_min_delta
                 if improved:
                     self.best_value, self.best_epoch = metric, epoch
+                if significant_improvement:
+                    self.patience_count = 0
+                else:
+                    self.patience_count += 1
                 record["is_best"] = int(improved)
+                record["early_stopping_patience_count"] = self.patience_count
                 self.history.append(record)
                 checkpoint = {"epoch": epoch, "model_state": self.model.state_dict(),
                               "optimizer_state": self.optimizer.state_dict(),
                               "scheduler_state": self.scheduler.state_dict() if self.scheduler is not None else None,
                               "scaler_state": self.scaler.state_dict(),
-                              "best_epoch": self.best_epoch, "best_value": self.best_value}
-                _save_checkpoint(self.run_dir / "last_model.pt", checkpoint)
+                              "best_epoch": self.best_epoch, "best_value": self.best_value,
+                              "patience_count": self.patience_count,
+                              "history": self.history, "run_fingerprint": self.run_fingerprint,
+                              "rng_state": self._rng_state(train_loader)}
+                _save_checkpoint(last_path, checkpoint)
                 if improved:
                     _save_checkpoint(self.run_dir / "best_model.pt", checkpoint)
                     self.logger.info("Best checkpoint updated | epoch=%d | val_%s=%.4f | %s",
@@ -226,10 +319,16 @@ class Trainer:
                                  epoch, self.epochs, train["total_loss"], validation["total_loss"],
                                  self.checkpoint_metric, metric, validation["macro_f1"], validation["micro_f1"],
                                  learning_rate, record["epoch_seconds"], improved)
+                if (self.early_stopping_patience is not None
+                        and self.patience_count >= self.early_stopping_patience):
+                    self.logger.info("EARLY STOP | epoch=%d | best_epoch=%d | best_val_%s=%.6f | patience=%d",
+                                     epoch, self.best_epoch, self.checkpoint_metric, self.best_value,
+                                     self.early_stopping_patience)
+                    break
             self._save_history("complete")
         except KeyboardInterrupt:
             self._save_history("interrupted")
-            self.logger.warning("INTERRUPTED during %s | completed_epochs=%d; artifacts preserved; use a new run_id",
+            self.logger.warning("INTERRUPTED during %s | completed_epochs=%d; checkpoint preserved; restart with --resume",
                                 phase, len(self.history))
             raise
         except Exception:

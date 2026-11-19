@@ -4,7 +4,8 @@ from __future__ import annotations
 import numpy as np
 from sklearn.metrics import (average_precision_score, f1_score, hamming_loss,
                              label_ranking_average_precision_score,
-                             multilabel_confusion_matrix, precision_recall_fscore_support)
+                             multilabel_confusion_matrix, precision_recall_fscore_support,
+                             roc_auc_score)
 
 from ..data.provenance import CLASS_NAMES
 
@@ -46,12 +47,17 @@ def multilabel_metrics(targets: np.ndarray, scores: np.ndarray, *, thresholds: d
     """Compute ranking and threshold-dependent metrics with class details."""
     y, p = _validate(targets, scores)
     per_ap = []
+    per_auc = []
     for i in range(y.shape[1]):
         per_ap.append(float(average_precision_score(y[:, i], p[:, i])) if y[:, i].any() else float("nan"))
+        per_auc.append(float(roc_auc_score(y[:, i], p[:, i])) if np.unique(y[:, i]).size == 2 else None)
     map_value = float(np.nanmean(per_ap))
+    auc_values = [v for v in per_auc if v is not None and np.isfinite(v)]
     result = {"mAP": map_value, "macro_average_precision": map_value,
+              "macro_roc_auc": float(np.mean(auc_values)) if auc_values else None,
               "label_ranking_average_precision": float(label_ranking_average_precision_score(y, p)),
-              "per_class": {name: {"average_precision": per_ap[i], "support": int(y[:, i].sum())} for i, name in enumerate(CLASS_NAMES)}}
+              "per_class": {name: {"average_precision": per_ap[i], "roc_auc": per_auc[i],
+                                    "support": int(y[:, i].sum())} for i, name in enumerate(CLASS_NAMES)}}
     if thresholds is None:
         threshold_vector = np.full(len(CLASS_NAMES), 0.5)
         result["thresholds"] = {name: 0.5 for name in CLASS_NAMES}
@@ -65,13 +71,39 @@ def multilabel_metrics(targets: np.ndarray, scores: np.ndarray, *, thresholds: d
         result["thresholds"] = {name: float(threshold_vector[i]) for i, name in enumerate(CLASS_NAMES)}
     predictions = (p >= threshold_vector[None, :]).astype(np.int32)
     precision, recall, f1, support = precision_recall_fscore_support(y, predictions, average=None, zero_division=0)
+    macro_precision, macro_recall, macro_f1, _ = precision_recall_fscore_support(
+        y, predictions, average="macro", zero_division=0)
+    micro_precision, micro_recall, micro_f1, _ = precision_recall_fscore_support(
+        y, predictions, average="micro", zero_division=0)
+    sample_precision, sample_recall, sample_f1, _ = precision_recall_fscore_support(
+        y, predictions, average="samples", zero_division=0)
+    confusions = multilabel_confusion_matrix(y, predictions)
     for i, name in enumerate(CLASS_NAMES):
-        result["per_class"][name].update({"precision": float(precision[i]), "recall": float(recall[i]), "f1": float(f1[i])})
-    result.update({"macro_f1": float(f1_score(y, predictions, average="macro", zero_division=0)),
-                   "micro_f1": float(f1_score(y, predictions, average="micro", zero_division=0)),
+        tn, fp, fn, tp = (int(v) for v in confusions[i].ravel())
+        accuracy = (tp + tn) / max(tp + tn + fp + fn, 1)
+        specificity = tn / max(tn + fp, 1)
+        result["per_class"][name].update({
+            "precision": float(precision[i]), "recall": float(recall[i]), "f1": float(f1[i]),
+            "accuracy": float(accuracy), "specificity": float(specificity),
+            "balanced_accuracy": float((recall[i] + specificity) / 2.0),
+            "true_positive": tp, "false_positive": fp,
+            "true_negative": tn, "false_negative": fn,
+        })
+    result.update({"macro_precision": float(macro_precision), "macro_recall": float(macro_recall),
+                   "macro_f1": float(macro_f1), "micro_precision": float(micro_precision),
+                   "micro_recall": float(micro_recall), "micro_f1": float(micro_f1),
+                   "samples_precision": float(sample_precision), "samples_recall": float(sample_recall),
+                   "samples_f1": float(sample_f1),
                    "hamming_loss": float(hamming_loss(y, predictions)),
+                   "label_accuracy": float(1.0 - hamming_loss(y, predictions)),
+                   "mean_class_accuracy": float(np.mean([
+                       (int(c[0, 0]) + int(c[1, 1])) / max(int(c.sum()), 1) for c in confusions])),
+                   "macro_balanced_accuracy": float(np.mean([
+                       (recall[i] + (int(confusions[i, 0, 0]) / max(int(confusions[i, 0].sum()), 1))) / 2.0
+                       for i in range(len(CLASS_NAMES))])),
                    "exact_match": float(np.all(y == predictions, axis=1).mean()),
-                   "confusion_matrix": multilabel_confusion_matrix(y, predictions).tolist()})
+                   "subset_accuracy": float(np.all(y == predictions, axis=1).mean()),
+                   "confusion_matrix": confusions.tolist()})
     return result
 
 
